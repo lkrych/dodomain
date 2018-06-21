@@ -14,5 +14,6 @@ module Dodomain
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    ActiveRecord::Base.logger = Logger.new("log/active_record.log") #This outputs the mysql queries to a file named active_record.log under your project's log folder.
   end
 end
