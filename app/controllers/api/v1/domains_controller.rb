@@ -1,4 +1,4 @@
-class DomainsController < ApplicationController
+class  Api::v1::DomainsController < Api::v1::BaseController
   def index
   end
 
