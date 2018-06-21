@@ -42,6 +42,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'rspec-rails'
+  gem 'factory_bot'
 end
 
 group :development do
