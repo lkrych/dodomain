@@ -1,5 +1,5 @@
 class Api::v1::UsersController < Api::v1::BaseController
-  def index
+  def new
   end
 
   def create
