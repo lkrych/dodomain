@@ -43,6 +43,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'simplecov'
 end
 
 group :development do
