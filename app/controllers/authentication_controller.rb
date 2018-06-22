@@ -1,7 +1,7 @@
 class AuthenticationController < ApplicationController
   before_action :authenticate_request!, only: :sign_out
 
-  def get_token
+  def get_token #acts as a sign in method
     email = user_params[:email]
     user = User.where(email: email).first
     if(user.nil?)
@@ -16,7 +16,7 @@ class AuthenticationController < ApplicationController
   end
 
 
-  def sign_up
+  def sign_up 
     email = user_params[:email]
     user = User.where(email: email).first
     if user
