@@ -4,13 +4,14 @@ RSpec.describe DomainsController, type: :controller do
 
   context "#index and user validations" do
     context 'as a valid user' do
-      it 'should return some domains!' do
+      it 'should return a domain with the proper fields!' do
         FactoryBot.create(:domain)
         token = get_valid_token()
         request.headers.merge! build_headers(token)
         get :index, params: {:domain => {order_by: "created_at"}}, :format => 'json'
         expect(response.status).to be(200)
         expect(json(response)).to include('domains', 'pagination')
+        expect(json(response)['domains'].first).to include('name', 'description', 'created_at')
         expect(json(response)['domains'].first['name']).to eq("mydomain.com")
       end
 
@@ -263,6 +264,90 @@ RSpec.describe DomainsController, type: :controller do
         expect(json(response)['errors']).to eq('An error occurred retrieving your data.')               
         
       end 
+    end
+  end
+
+  context "#create and user validations" do
+    before(:all) do
+      Domain.destroy_all
+      User.destroy_all
+      FactoryBot.create(:user)
+    end
+    context 'as a valid user' do
+      it 'should return a success message!' do
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+
+        get :create, params: {:domain => {name: "https://www.google.com", description: "a glorious new domain"}}, :format => 'json'
+        expect(response.status).to be(200)
+        expect(json(response)).to include('message')
+        expect(json(response)['message']).to eq("Domain successfully saved!")
+        expect(Domain.count).to eq(1)
+      end
+
+      context 'with valid urls' do
+
+        it 'should strip all url elements from submission' do
+          url_hash = { 
+            "https://www.opendns.com/about": "opendns.com",
+            "http://www.belugawhale.com/songs/about": "belugawhale.com",
+            "https://www.google.co.uk": "google.co.uk"
+              }
+
+          token = get_valid_token()
+          request.headers.merge! build_headers(token)
+
+          url_hash.each do |k, v|
+            get :create, params: {:domain => {name: k, description: "some filler description"}}, :format => 'json'
+            expect(response.status).to be(200)
+            expect(json(response)).to include('message')
+            expect(json(response)['message']).to eq("Domain successfully saved!")
+            expect(Domain.last.name).to eq(v)
+          end
+          expect(Domain.count).to eq(3) 
+        end
+
+      end
+
+      context 'with invalid urls' do
+
+        it 'should reject invalid domain submissions' do
+          token = get_valid_token()
+          request.headers.merge! build_headers(token)
+          ["invalidinvalidicky.domaincom", "somethingor.snothera.ocm"].each do |bad_url|
+            get :create, params: {:domain => {name: bad_url, description: "some filler description"}}, :format => 'json'
+            expect(response.status).to be(400)
+            expect(json(response)).to include('errors')
+            expect(json(response)['errors']).to eq('An error occurred saving your domain.')
+            expect(Domain.count).to eq(0)
+          end
+        end
+      end
+
+    end
+
+    context 'as a nefarious user hitting our api' do
+      it 'should return a 404 html page' do
+        get :create, params: {:domain => {name: "newDomain!", description: "a glorious new domain"}}
+        expect(response.status).to be(404)
+        expect(response.content_type).to eq('text/html')
+        expect(Domain.count).to eq(0)
+      end
+    end
+
+    context 'as a nefarious user who manipulates their JWT' do
+      it 'should return as Not Authenticated' do  
+        token = get_valid_token()
+        decoded = JsonWebToken.decode(token)
+        decoded['user_id'] = 4
+        tampered = JsonWebToken.encode(decoded, "not_our_secret_key")
+        request.headers.merge! build_headers(tampered)
+        get :create, params: {:domain => {name: "newDomain!", description: "a glorious new domain"}}, :format => 'json'
+
+        expect(response.status).to be(401)
+        expect(json(response)['errors']).to include('Not Authenticated')
+        expect(Domain.count).to eq(0)
+      end
     end
   end
 
