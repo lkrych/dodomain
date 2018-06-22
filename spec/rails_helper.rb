@@ -60,4 +60,20 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
+
+  #helper for decoding json
+  def json(response)
+    JSON.parse(response.body)
+  end
+
+  def get_valid_token()
+    return JsonWebToken.encode({
+      user_id: User.first.id,
+      })
+  end
+  
+  def build_headers(token)
+    return { 'Authorization' => "Bearer #{token}" }
+  end
+  
 end
