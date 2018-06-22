@@ -1,10 +1,11 @@
 class User < ApplicationRecord
+  #add association
+  has_many :domains, dependent: :destroy
+
   #add some validations
-  attr_accessible :email, :password, :password_confirmation
   attr_accessor :password
-  EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
-  validates :password, :confirmation => true #password_confirmation attr
   validates_length_of :password, :in => 6..20, :on => :create
   #add some callbacks
   before_save :encrypt_password
@@ -22,6 +23,6 @@ class User < ApplicationRecord
   end
 
   def match_password(login_password="")
-    encrypted_password == BCrypt::Engine.hash_secret(login_password, salt)
+    self.password_digest == BCrypt::Engine.hash_secret(login_password, salt)
   end
 end
