@@ -19,7 +19,12 @@ SimpleCov.start
 RSpec.configure do |config|
 
   #silence puts statements
-  config.before { allow($stdout).to receive(:puts) }
+  # config.before { allow($stdout).to receive(:puts) }
+
+  config.after(:each) do
+    User.destroy_all
+    Domain.destroy_all
+  end
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
