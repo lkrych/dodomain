@@ -6,7 +6,9 @@ class JsonWebToken
   def self.decode(token)
     begin
       return HashWithIndifferentAccess.new(JWT.decode(token, Rails.application.secrets.secret_key_base)[0])
-    rescue JWT::ExpiredSignature
-      return JWT::ExpiredSignature
+    rescue => e
+      puts e, e.backtrace
+      return e
     end
+  end
 end
