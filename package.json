@@ -1,5 +1,12 @@
 {
   "name": "dodomain",
-  "private": true,
-  "dependencies": {}
+  "engines": {
+    "node": "6.10.1",
+    "npm": "3.10.10"
+  },
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build && cd ..",
+    "deploy": "cp -a frontend/build/. public/",
+    "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+  }
 }
