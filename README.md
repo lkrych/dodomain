@@ -52,7 +52,7 @@ When run, the migration for the *users* table outputted this sql query:
 
 `CREATE TABLE "users" ("id" bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, "email" varchar(255) DEFAULT '' NOT NULL, "password_digest" varchar(255) DEFAULT '' NOT NULL, "salt" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)`
 
-I also added an index on the email of the user.
+add an index to the email of the user.
 
 `CREATE UNIQUE INDEX "index_users_on_email"  ON "users" ("email")`
 
@@ -69,7 +69,11 @@ When run, the migration for the *domains* table outputted this sql query:
 
 `CREATE TABLE "domains" ("id" bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, "name" varchar(255) DEFAULT '' NOT NULL, "description" text NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)`
 
-I also added an index on the email of the user.
+add a foreign key to user table
+
+`ALTER TABLE "domains" ADD "user_id" bigint`
+
+add an index to the name of the domain.
 
 `CREATE UNIQUE INDEX "index_domains_on_name"  ON "domains" ("name")`
 
