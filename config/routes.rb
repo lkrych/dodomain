@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   delete 'auth' => 'authentication#sign_out'
       
  
+  #render index.html page in public which is our react app!
+  get '*path', to: redirect('/')
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
