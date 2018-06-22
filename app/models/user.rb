@@ -7,6 +7,7 @@ class User < ApplicationRecord
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
   validates_length_of :password, :in => 6..20, :on => :create
+  
   #add some callbacks
   before_save :encrypt_password
   after_save :clear_password
