@@ -1,4 +1,4 @@
-class Api::v1::UsersController < Api::v1::BaseController
+class UsersController < ApplicationController
   
   def new
     @user = User.new 
