@@ -2,17 +2,267 @@ require 'rails_helper'
 
 RSpec.describe DomainsController, type: :controller do
 
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
-  end
+  context "#index and user validations" do
+    context 'as a valid user' do
+      it 'should return some domains!' do
+        FactoryBot.create(:domain)
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, params: {:domain => {order_by: "created_at"}}, :format => 'json'
+        expect(response.status).to be(200)
+        expect(json(response)).to include('domains', 'pagination')
+        expect(json(response)['domains'].first['name']).to eq("mydomain.com")
+      end
 
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
+    end
+
+    context 'as a nefarious user hitting our api' do
+      it 'should return a 404 html page' do
+        get :index, params: {:domain => {order_by: ""}}
+        expect(response.status).to be(404)
+        expect(response.content_type).to eq('text/html')
+      end
+    end
+
+    context 'as a nefarious user who manipulates their JWT' do
+      it 'should return as Not Authenticated' do  
+        FactoryBot.create(:user)      
+        token = get_valid_token()
+        decoded = JsonWebToken.decode(token)
+        decoded['user_id'] = 4
+        tampered = JsonWebToken.encode(decoded, "not_our_secret_key")
+        request.headers.merge! build_headers(tampered)
+        get :index, params: {:domain => {order_by: ""}}, :format => 'json'
+
+        expect(response.status).to be(401)
+        expect(json(response)['errors']).to include('Not Authenticated')
+      end
+    end
+
+    context 'verifying that the application can recover from JWT errors' do
+      before (:each) do
+        FactoryBot.create(:user)      
+      end
+      it 'should return as Not Authenticated if VerificationError is raised' do
+        allow(JsonWebToken).to receive(:decode).and_raise(JWT::VerificationError)
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, params: {:domain => {order_by: ""}}, :format => 'json'
+
+        expect(response.status).to be(401)
+        expect(json(response)['errors']).to include('Not Authenticated')
+      end
+
+      it 'should return as Not Authenticated if DecodeError is raised' do
+        allow(JsonWebToken).to receive(:decode).and_raise(JWT::DecodeError)
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, params: {:domain => {order_by: ""}}, :format => 'json'
+
+        expect(response.status).to be(401)
+        expect(json(response)['errors']).to include('Not Authenticated')
+      end
+
+      it 'should return as Not Authenticated if ExpiredSignature is raised' do
+        allow(JsonWebToken).to receive(:decode).and_raise(JWT::ExpiredSignature)
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, params: {:domain => {order_by: ""}}, :format => 'json'
+
+        expect(response.status).to be(401)
+        expect(json(response)['errors']).to include('Not Authenticated')
+      end
+    end
+
+    context 'with multiple domains using sorting options' do
+      before(:all) do
+        u1 = FactoryBot.create(:user)
+        u2 = FactoryBot.create(:user, email: "anothervalidemail@yahoo.com")
+        (1...100).each do |idx|
+          Domain.create(
+            name: "domain#{idx}", 
+            description: "description for domain#{idx}", 
+            user_id: idx.odd? ? u1.id : u2.id )
+        end
+      end
+
+      it "should return the correct number of domains and default to sorting by created_at" do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, params: {:domain => {blah:""}}, :format => 'json'
+        json = json(response)
+        expect(response.status).to be(200)
+        expect(json).to include('domains', 'pagination')
+        expect(json['domains'].length).to eq(50)
+        expect(json['domains'].first['name']).to eq('domain99')
+        sorted = json['domains'].sort {|b, a| a['id'] <=> b['id']}
+        expect(json['domains']).to eq(sorted)
+      end
+
+      it "should return the domains in reverse order if desc param is passed" do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params => {:domain => {desc: false}}, :format => 'json'
+        json = json(response)        
+        expect(response.status).to be(200)
+        expect(json).to include('domains', 'pagination')
+        expect(json['domains'].length).to eq(50)
+        expect(json['domains'].first['name']).to eq('domain1')
+        sorted = json['domains'].sort {|a, b| a['id'] <=> b['id']}
+        expect(json['domains']).to eq(sorted)
+      end
+
+      it "should change the page if the page param is passed" do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params => {:domain =>{page: 3}}, :format => 'json'
+        expect(response.status).to be(200)
+        expect(json(response)).to include('domains', 'pagination')
+        expect(json(response)['domains'].length).to eq(0)
+        expect(json(response)['pagination']['page']).to eq('3')
+      end
+
+
+      it "should only return the searched for domain if search_query param is used" do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params => {:domain =>{search_query: 'domain26'}}, :format => 'json'
+        expect(response.status).to be(200)
+        expect(json(response)).to include('domains', 'pagination')
+        expect(json(response)['domains'].length).to eq(1)
+        expect(json(response)['domains'].first['name']).to eq('domain26')
+      end
+
+      it "should return the domains sorted by order_by param: name " do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params => {:domain =>{order_by: 'name'}}, :format => 'json'
+        expect(response.status).to be(200)
+        json = json(response)
+        expect(json).to include('domains', 'pagination')
+        expect(json['domains'].length).to eq(50)
+        expect(json['domains'].first['name']).to eq('domain99')
+        sorted = json['domains'].sort {|b, a| a['name'] <=> b['name']}
+        expect(json['domains']).to eq(sorted)
+      end
+
+
+      it "should return the domains sorted by order_by param: name in reverse order if desc param is used " do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params => {:domain =>{order_by: 'name', desc: false}}, :format => 'json'
+        expect(response.status).to be(200)
+        json = json(response)
+        expect(json).to include('domains', 'pagination')
+        expect(json['domains'].length).to eq(50)
+        expect(json['domains'].first['name']).to eq('domain1')
+        sorted = json['domains'].sort {|a, b| a['name'] <=> b['name']}
+        expect(json['domains']).to eq(sorted)
+      end
+
+      it "should return the domains sorted by order_by param: description " do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params => {:domain =>{order_by: 'description'}}, :format => 'json'
+        expect(response.status).to be(200)
+        json = json(response)
+        expect(json).to include('domains', 'pagination')
+        expect(json['domains'].length).to eq(50)
+        expect(json['domains'].first['description']).to eq("description for domain99")
+        sorted = json['domains'].sort {|b, a| a['description'] <=> b['description']}
+        expect(json['domains']).to eq(sorted)
+      end
+
+      it "should return the domains sorted by order_by param: description in reverse order if desc param is used " do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params => {:domain =>{order_by: 'description', desc: false}}, :format => 'json'
+        json = json(response)
+        expect(response.status).to be(200)
+        expect(json).to include('domains', 'pagination')
+        expect(json['domains'].length).to eq(50)
+        expect(json['domains'].first['description']).to eq("description for domain1")
+        sorted = json['domains'].sort {|a, b| a['description'] <=> b['description']}
+        expect(json['domains']).to eq(sorted)
+      end
+
+      it "should return the domains sorted by order_by param: created_at " do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params => {:domain =>{order_by: 'created_at', desc: true}}, :format => 'json'
+        json = json(response)
+        expect(response.status).to be(200)
+        expect(json).to include('domains', 'pagination')
+        expect(json['domains'].length).to eq(50)
+        expect(json['domains'].first['name']).to eq('domain99')
+        sorted = json['domains'].sort {|b, a| a['id'] <=> b['id']}
+        expect(json['domains']).to eq(sorted)
+      end
+
+      it "should return the domains sorted by order_by param: created_at in reverse order if desc param is used " do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params => {:domain =>{order_by: 'created_at', desc: false}}, :format => 'json'
+        json = json(response)
+        expect(response.status).to be(200)
+        expect(json).to include('domains', 'pagination')
+        expect(json['domains'].length).to eq(50)
+        expect(json['domains'].first['name']).to eq('domain1')
+        sorted = json['domains'].sort {|a, b| a['id'] <=> b['id']}
+        expect(json['domains']).to eq(sorted)
+      end
+
+      it "should throw an error if bogus order_by params are fed to it" do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params =>  {:domain =>{order_by: 'baby beluga', desc: false}}, :format => 'json'
+        expect(response.status).to be(400)
+        expect(json(response)['errors']).to eq('An error occurred retrieving your data.')       
+        
+      end
+  
+      
+      it "should default to normal sorting if bogus desc params are fed to it" do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params => {:domain =>{desc: 'baby beluga'}}, :format => 'json'
+        expect(response.status).to be(200)
+        expect(json(response)['domains'].length).to eq(50)
+        expect(json(response)['domains'].first['name']).to eq('domain99')
+        
+      end 
+
+      it "should not return domains if bogus query params are fed to it" do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params =>  {:domain =>{search_query: 'baby beluga', desc: false}}, :format => 'json'
+        expect(response.status).to be(200)
+        expect(json(response)['domains'].length).to eq(0)
+        
+      end
+      
+      it "should throw an error if bogus page params are fed to it" do
+        
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+        get :index, :params =>  {:domain =>{page: 'baby beluga', desc: false}}, :format => 'json'
+        expect(response.status).to be(400)
+        expect(json(response)['errors']).to eq('An error occurred retrieving your data.')               
+        
+      end 
     end
   end
 
