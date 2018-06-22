@@ -36,7 +36,10 @@ class  DomainsController < ApplicationController
   def create
     begin
       d = Domain.new(domain_params)
-      d.save
+      d.user_id = @current_user.id
+      d.parse_domain
+      d.check_if_valid_domain
+      d.save!
       render json: {message: "Domain successfully saved!"}, status: :ok
     rescue => e
       puts e, e.backtrace
