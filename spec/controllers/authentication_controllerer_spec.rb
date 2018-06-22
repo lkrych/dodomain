@@ -59,7 +59,6 @@ RSpec.describe AuthenticationController, type: :controller do
       expect(returnedJSON).to have_key("auth_token")
       decoded = decodeResponseJWT(response)
       expect(User.count).to eq(2)
-      p User.first
     end
 
     it "should return an error the user has already signed up" do
