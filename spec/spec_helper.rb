@@ -19,9 +19,9 @@ SimpleCov.start
 RSpec.configure do |config|
 
   #silence puts statements
-  # config.before { allow($stdout).to receive(:puts) }
+  config.before { allow($stdout).to receive(:puts) }
 
-  config.after(:each) do
+  config.before(:each) do
     User.destroy_all
     Domain.destroy_all
   end
