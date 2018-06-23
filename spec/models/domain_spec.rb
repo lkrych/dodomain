@@ -16,7 +16,7 @@ RSpec.describe Domain, type: :model do
 
   context "methods" do
     context "#search" do
-      before(:all) do
+      before(:each) do
         FactoryBot.create(:domain)
       end
       it "should find a record if it exists" do
