@@ -76,7 +76,7 @@ RSpec.describe DomainsController, type: :controller do
     end
 
     context 'with multiple domains using sorting options' do
-      before(:all) do
+      before(:each) do
         u1 = FactoryBot.create(:user)
         u2 = FactoryBot.create(:user, email: "anothervalidemail@yahoo.com")
         (1...100).each do |idx|
@@ -268,9 +268,7 @@ RSpec.describe DomainsController, type: :controller do
   end
 
   context "#create and user validations" do
-    before(:all) do
-      Domain.destroy_all
-      User.destroy_all
+    before(:each) do
       FactoryBot.create(:user)
     end
     context 'as a valid user' do
