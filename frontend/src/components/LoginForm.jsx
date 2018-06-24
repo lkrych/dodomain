@@ -22,9 +22,15 @@ class LoginForm extends Component {
     this.props.login(this.state);
   }
 
+  componentWillUnmount(){
+    this.props.clearErrors();
+  }
+
   render() {
+    let textErrors = <div className="errors">{this.props.errors}</div>;
     return (
       <div>
+        {textErrors}
         <form>
           <div className='field'>
             <label> Email </label>
