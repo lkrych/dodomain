@@ -1,4 +1,16 @@
 import React, {Component} from 'react';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  root: theme.mixins.gutters({
+    paddingTop: theme.spacing.unit * 3,
+    paddingBottom: 16,
+  }),
+});
 
 class LoginForm extends Component {
   constructor(props) {
@@ -27,36 +39,46 @@ class LoginForm extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     let textErrors = <div className="errors">{this.props.errors}</div>;
     return (
-      <div>
+      <Paper className={classes.root} elevation={4}>
+      <Typography variant="headline" gutterBottom>
+          Log In
+        </Typography>
         {textErrors}
         <form>
           <div className='field'>
-            <label> Email </label>
-            <br />
-            <input autoFocus='autofocus' type='email'
+            <TextField
+              label='email'
+              type='email'
               id='email' 
               onChange={this.onInput('email')}
               value={this.state.email} />
           </div>
           <div className='field' >
-            <label> Password </label>
-            <br />
-            <input autoComplete='off' type='password'
+            <TextField 
+              autoComplete='off' 
+              label="password"
+              type='password'
               id='password' 
               onChange={this.onInput('password')}
               value={this.state.password}
                 />
             </div>
-          < input
+            <br></br>
+
+          < Button
             type="submit"
+            variant="contained" color="primary"
             className="btn btn-primary btn-submit"
-            onClick={this.onSubmit}/>
+            onClick={this.onSubmit}>
+            Log In
+            </Button>
         </form>
-      </div>
+      </Paper>
     );
   }
 }
 
-export default LoginForm;
+export default withStyles(styles)(LoginForm);
