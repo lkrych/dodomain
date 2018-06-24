@@ -13,7 +13,10 @@ const _defaultDomains = {
 const domainReducer = (state = _defaultDomains, action) => {
   switch(action.type) {
     case RECEIVE_DOMAINS: 
-      return action.domains;
+      return Object.assign({},
+        state,
+        {domains: action.domains.domains},
+        {pagination: action.domains.pagination});
     default:
       return state;
   }
