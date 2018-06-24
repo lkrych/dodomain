@@ -41,7 +41,12 @@ class SubmitDomain extends Component {
 
   render(){
     const { classes } = this.props;
-    let textErrors = <div className="errors">{this.props.errors}</div>;
+    let textErrors = <Typography color="error" variant="body2" >{this.props.errors ? this.props.errors : this.state.errors}</Typography>;
+    let domainError = false;
+    
+    if (/Email/g.exec(this.state.errors) || /email/g.exec(this.props.errors)  ) {
+      domainError = true;
+    } 
 
     return (
       <Paper className={classes.root} elevation={4}>
@@ -55,6 +60,7 @@ class SubmitDomain extends Component {
         <form action="">
           <div className='field'>
             <TextField
+              error={domainError ? true : null}
               label='Domain Name' 
               type='name'
               id='name' 
