@@ -1,15 +1,17 @@
 import { connect } from 'react-redux';
 
 import IndexView from '../components/IndexView';
-import {fetchDomains} from '../actions/actions';
+import {fetchDomains, clearErrorsState} from '../actions/actions';
 
 const mapStateToProps = state => ({
-  domains: state.domains
+  domains: state.domains,
+  errors: state.errors.domain_errors
 });
 
 const mapDispatchToProps = dispatch => (
   {
-    fetchDomains: (sortState) => fetchDomains(sortState, dispatch)
+    fetchDomains: (sortState) => fetchDomains(sortState, dispatch),
+    clearErrors: () => clearErrorsState(dispatch)
   }
 );
 
