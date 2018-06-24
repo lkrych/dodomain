@@ -28,7 +28,7 @@ class IndexView extends Component {
       <div>
         {textErrors}
         <h3>List of domains</h3>
-        <ul>
+        <ul className="domain-list">
           {domains}
         </ul>
       </div>
