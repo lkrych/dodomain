@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 
-import TextInput from './reusable/TextInput';
-
-
 class SubmitDomain extends Component {
   constructor(props){
     super(props);
@@ -31,11 +28,14 @@ class SubmitDomain extends Component {
     return (
       <div>
         <form action="">
-        < TextInput
-            name="name"
-            label="name"
-            value={this.state.name}
-            onChange={this.onInput}/>
+        <div className='field'>
+            <label> Domain Name ex: "npr.org" </label>
+            <br />
+            <input autoFocus='autofocus' type='name'
+              id='name' 
+              onChange={this.onInput('name')}
+              value={this.state.name} />
+          </div>
 
          <textarea type='text'
             value={this.state.description}
