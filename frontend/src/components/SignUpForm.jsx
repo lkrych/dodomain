@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import TextInput from './reusable/TextInput';
-
 class LoginForm extends Component {
   constructor(props) {
     super(props);
