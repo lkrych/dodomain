@@ -52,7 +52,7 @@ export const logout = (dispatch) => (
 );
 
 export const signUp = (signupInfo, dispatch) => (
-  APIUtil.signUp(signupInfo).then( () => dispatch(logIn())
+  APIUtil.signUp(signupInfo).then( errors => dispatch(logIn(errors))
 ));
 
 export const clearErrorsState = (dispatch) => (
