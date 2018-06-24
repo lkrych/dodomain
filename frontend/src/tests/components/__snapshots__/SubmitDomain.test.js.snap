@@ -1,0 +1,421 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubmitDomain renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SubmitDomain
+    submitDomain={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="errors"
+/>,
+        <form
+          action=""
+>
+          <div
+                    className="field"
+          >
+                    <label>
+                               Domain Name ex: "npr.org" 
+                    </label>
+                    <br />
+                    <input
+                              autoFocus="autofocus"
+                              id="name"
+                              onChange={[Function]}
+                              type="name"
+                              value=""
+                    />
+          </div>
+          <textarea
+                    cols="80"
+                    id="description"
+                    name="description"
+                    onChange={[Function]}
+                    required={true}
+                    rows="15"
+                    type="text"
+                    value=""
+          />
+          <input
+                    className="btn btn-primary btn-submit"
+                    onClick={[Function]}
+                    type="submit"
+          />
+</form>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": undefined,
+          "className": "errors",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "action": "",
+          "children": Array [
+            <div
+              className="field"
+>
+              <label>
+                             Domain Name ex: "npr.org" 
+              </label>
+              <br />
+              <input
+                            autoFocus="autofocus"
+                            id="name"
+                            onChange={[Function]}
+                            type="name"
+                            value=""
+              />
+</div>,
+            <textarea
+              cols="80"
+              id="description"
+              name="description"
+              onChange={[Function]}
+              required={true}
+              rows="15"
+              type="text"
+              value=""
+/>,
+            <input
+              className="btn btn-primary btn-submit"
+              onClick={[Function]}
+              type="submit"
+/>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <label>
+                   Domain Name ex: "npr.org" 
+</label>,
+                <br />,
+                <input
+                  autoFocus="autofocus"
+                  id="name"
+                  onChange={[Function]}
+                  type="name"
+                  value=""
+/>,
+              ],
+              "className": "field",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": " Domain Name ex: \\"npr.org\\" ",
+                },
+                "ref": null,
+                "rendered": " Domain Name ex: \\"npr.org\\" ",
+                "type": "label",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "autoFocus": "autofocus",
+                  "id": "name",
+                  "onChange": [Function],
+                  "type": "name",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "input",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "cols": "80",
+              "id": "description",
+              "name": "description",
+              "onChange": [Function],
+              "required": true,
+              "rows": "15",
+              "type": "text",
+              "value": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "textarea",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "btn btn-primary btn-submit",
+              "onClick": [Function],
+              "type": "submit",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+        ],
+        "type": "form",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="errors"
+/>,
+          <form
+            action=""
+>
+            <div
+                        className="field"
+            >
+                        <label>
+                                     Domain Name ex: "npr.org" 
+                        </label>
+                        <br />
+                        <input
+                                    autoFocus="autofocus"
+                                    id="name"
+                                    onChange={[Function]}
+                                    type="name"
+                                    value=""
+                        />
+            </div>
+            <textarea
+                        cols="80"
+                        id="description"
+                        name="description"
+                        onChange={[Function]}
+                        required={true}
+                        rows="15"
+                        type="text"
+                        value=""
+            />
+            <input
+                        className="btn btn-primary btn-submit"
+                        onClick={[Function]}
+                        type="submit"
+            />
+</form>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+            "className": "errors",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "action": "",
+            "children": Array [
+              <div
+                className="field"
+>
+                <label>
+                                 Domain Name ex: "npr.org" 
+                </label>
+                <br />
+                <input
+                                autoFocus="autofocus"
+                                id="name"
+                                onChange={[Function]}
+                                type="name"
+                                value=""
+                />
+</div>,
+              <textarea
+                cols="80"
+                id="description"
+                name="description"
+                onChange={[Function]}
+                required={true}
+                rows="15"
+                type="text"
+                value=""
+/>,
+              <input
+                className="btn btn-primary btn-submit"
+                onClick={[Function]}
+                type="submit"
+/>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <label>
+                     Domain Name ex: "npr.org" 
+</label>,
+                  <br />,
+                  <input
+                    autoFocus="autofocus"
+                    id="name"
+                    onChange={[Function]}
+                    type="name"
+                    value=""
+/>,
+                ],
+                "className": "field",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": " Domain Name ex: \\"npr.org\\" ",
+                  },
+                  "ref": null,
+                  "rendered": " Domain Name ex: \\"npr.org\\" ",
+                  "type": "label",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "autoFocus": "autofocus",
+                    "id": "name",
+                    "onChange": [Function],
+                    "type": "name",
+                    "value": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "input",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "cols": "80",
+                "id": "description",
+                "name": "description",
+                "onChange": [Function],
+                "required": true,
+                "rows": "15",
+                "type": "text",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "textarea",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "btn btn-primary btn-submit",
+                "onClick": [Function],
+                "type": "submit",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+          ],
+          "type": "form",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
