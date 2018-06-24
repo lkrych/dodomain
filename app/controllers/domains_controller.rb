@@ -30,7 +30,7 @@ class  DomainsController < ApplicationController
       logger.error "###############"
       logger.error "The backtrace for the domains_controller error: #{e} is \n #{e.backtrace}"
       logger.error "###############"
-      render json: {errors: 'An error occurred retrieving your data.'}, status: :bad_request
+      render json: {domain_errors: 'An error occurred retrieving your data.'}, status: :bad_request
     end
   end
 
@@ -47,7 +47,7 @@ class  DomainsController < ApplicationController
       logger.error "###############"
       logger.error "The backtrace for the domains_controller error: #{e} is \n #{e.backtrace}"
       logger.error "###############"
-      render json: {errors: 'An error occurred saving your domain.'}, status: :bad_request
+      render json: {domain_errors: "An error occurred saving your domain: #{e}"}, status: :bad_request
     end
   end
 
