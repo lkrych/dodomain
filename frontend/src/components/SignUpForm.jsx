@@ -21,7 +21,6 @@ class LoginForm extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log("hitting onSubmit in signup!"); 
     if (!this.state.email) {
       return this.setState({
         errors: 'Email is required.',
@@ -47,6 +46,10 @@ class LoginForm extends Component {
       email: this.state.email,
       password: this.state.password,
     });
+  }
+
+  componentWillUnmount(){
+    this.props.clearErrors();
   }
 
   render() {
