@@ -10,9 +10,6 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 3,
     paddingBottom: 16,
   }),
-  errors: {
-    color: "danger"
-  }
 });
 
 class LoginForm extends Component {
