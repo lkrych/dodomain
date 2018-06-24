@@ -46,13 +46,14 @@ class SubmitDomain extends Component {
          <textarea type='text'
             value={this.state.description}
             onChange={this.onInput('description')} 
+            id='description'
             name='description' 
             cols='80' rows='15' required/>
 
 
         < input
           type="submit"
-          className="btn btn-primary"
+          className="btn btn-primary btn-submit"
           onClick={this.onSubmit}/>
         </form>
       </div>
