@@ -15,7 +15,7 @@ class Header extends Component {
           <Link to="/submit" 
             className="active">Submit Domain</Link>
           {" | "}
-          <a onClick={this.props.logout} href="/logout">Log Out</a>
+          <a onClick={this.props.logout} href="/" id="logout">Log Out</a>
         </nav>
       );
     } else {
@@ -24,7 +24,9 @@ class Header extends Component {
           <Link to="/" 
             className="active">Home</Link>
           {" | "}
-          <Link to="/login" className="active">
+          <Link to="/login" 
+            className="active"
+            id="login">
             Log In</Link>
           {" | "}
           <Link to="/signup" className="active">
