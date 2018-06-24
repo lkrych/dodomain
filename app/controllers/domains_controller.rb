@@ -5,6 +5,7 @@ class  DomainsController < ApplicationController
       #handle sorting and searching on the index method
       @search_query = index_params[:search_query] || ''
       @page = index_params[:page] ||= 1
+        
       offset = @page.to_i - 1
       @desc = index_params[:desc] == Constants::FALSE ? false : true
       @order_by = index_params[:order_by] ||= :id
@@ -19,7 +20,7 @@ class  DomainsController < ApplicationController
         pagination: {
           totalPages: @total,
           page: @page,
-          query: @search_query,
+          search_query: @search_query,
           desc: @desc,
           order_by: @order_by
         }
@@ -56,6 +57,6 @@ class  DomainsController < ApplicationController
   end
 
   def index_params
-    params.require(:domain).permit(:search_query, :page, :desc, :order_by)
+    params.permit(:search_query, :page, :desc, :order_by)
   end
 end
