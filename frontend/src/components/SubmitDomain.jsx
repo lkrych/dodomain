@@ -20,13 +20,19 @@ class SubmitDomain extends Component {
 
   onSubmit(e){
     e.preventDefault();
-    console.log("submitting domain");
+    this.props.submitDomain({domain: this.state});
+    this.setState({
+      name: '',
+      description: ''
+    });
   }
 
   render(){
-    
+    let textErrors = <div className="errors">{this.props.errors}</div>;
+
     return (
       <div>
+        {textErrors}
         <form action="">
         <div className='field'>
             <label> Domain Name ex: "npr.org" </label>
@@ -39,7 +45,7 @@ class SubmitDomain extends Component {
 
          <textarea type='text'
             value={this.state.description}
-            onChange={this.onInput} 
+            onChange={this.onInput('description')} 
             name='description' 
             cols='80' rows='15' required/>
 
