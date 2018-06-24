@@ -33,6 +33,7 @@ class SignUpForm extends Component {
   }
 
   onSubmit(e) {
+    console.log("I'm being submitted!");
     e.preventDefault();
     if (!this.state.email) {
       return this.setState({
@@ -59,15 +60,31 @@ class SignUpForm extends Component {
       email: this.state.email,
       password: this.state.password,
     });
+    this.setState({
+      errors: ''
+    });
   }
 
   componentWillUnmount(){
     this.props.clearErrors();
   }
 
+  componentWillUpdate(nextProps){
+    if (nextProps.session) { //redirect if logged in
+      this.props.history.push('/index');
+    }
+  }
+
   render() {
     const { classes } = this.props;
-    let textErrors = <div className="errors">{this.props.errors}</div>;
+    let textErrors = <Typography color="error" variant="body2" >{this.props.errors ? this.props.errors : this.state.errors}</Typography>;
+    let emailError = false;
+    let passwordError = false;
+    if (/Email/g.exec(this.state.errors) || /email/g.exec(this.props.errors)  ) {
+      emailError = true;
+    } else if (this.state.errors.length > 0) {
+      passwordError = true;
+    }
     return (
       <Paper className={classes.root} elevation={4}>
         {textErrors}
@@ -77,7 +94,8 @@ class SignUpForm extends Component {
         <form>
         <div className='field'>
             
-            <TextField autoFocus='autofocus'
+            <TextField 
+              error={emailError ? true : null}
               label='email'
               type='email'
               id='email' 
@@ -86,6 +104,7 @@ class SignUpForm extends Component {
           </div>
           <div className='field' >
             <TextField 
+              error={passwordError ? true : null}
               autoComplete='off' 
               label='password'
               type='password'
@@ -98,9 +117,10 @@ class SignUpForm extends Component {
           <div className='field' >
             
             <TextField 
+              error={passwordError ? true : null}
               autoComplete='off'
               type='password'
-              label="password_confirmation"
+              label="password confirmation"
               id='password_confirmation' 
               onChange={this.onInput('password_confirmation')}
               value={this.state.password_confirmation}
