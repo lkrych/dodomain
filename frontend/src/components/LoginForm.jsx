@@ -10,6 +10,9 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 3,
     paddingBottom: 16,
   }),
+  errors: {
+    color: "danger"
+  }
 });
 
 class LoginForm extends Component {
@@ -34,13 +37,30 @@ class LoginForm extends Component {
     this.props.login(this.state);
   }
 
+  componentWillUpdate(nextProps){
+    if (nextProps.session) { //redirect if logged in
+      this.props.history.push('/index');
+    }
+  }
+
   componentWillUnmount(){
     this.props.clearErrors();
   }
 
   render() {
+  
     const { classes } = this.props;
-    let textErrors = <div className="errors">{this.props.errors}</div>;
+    let textErrors = <Typography color="error" variant="body2" >{this.props.errors}</Typography>;
+    let emailError = false;
+    let passwordError = false;
+    if (/Password/g.exec(this.props.errors)) {
+      passwordError = true;
+    }
+
+    if (/account/g.exec(this.props.errors)) {
+      emailError = true;
+    }
+
     return (
       <Paper className={classes.root} elevation={4}>
       <Typography variant="headline" gutterBottom>
@@ -50,6 +70,7 @@ class LoginForm extends Component {
         <form>
           <div className='field'>
             <TextField
+              error={emailError ? true : null}
               label='email'
               type='email'
               id='email' 
@@ -57,7 +78,8 @@ class LoginForm extends Component {
               value={this.state.email} />
           </div>
           <div className='field' >
-            <TextField 
+            <TextField
+              error={passwordError ? true : null}
               autoComplete='off' 
               label="password"
               type='password'
