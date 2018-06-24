@@ -48,7 +48,7 @@ class AuthenticationController < ApplicationController
   end
 
   def send_error(message)
-    render json: {errors: [message]}, status: :unauthorized
+    render json: {session_errors: message}, status: :unauthorized
   end
 
   def payload(user)
