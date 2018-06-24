@@ -40,9 +40,10 @@ RSpec.describe Domain, type: :model do
       valid = [
         Domain.new(name: "https://news.ycombinator.com", description: "hacker news", user_id: u.id),
         Domain.new(name: "https://www.pitchfork.com/latest", description: "music news", user_id: u.id),
-        Domain.new(name: "https://www.mountainproject.com/area/105833381/yosemite-national-park", description: "yosemite!", user_id: u.id),
+        Domain.new(name: "http://www.mountainproject.com/area/105833381/yosemite-national-park", description: "yosemite!", user_id: u.id),
+        Domain.new(name: "google.com", description: "search", user_id: u.id),
       ]
-      parsed_valid = ["ycombinator.com", "pitchfork.com", "mountainproject.com"]
+      parsed_valid = ["ycombinator.com", "pitchfork.com", "mountainproject.com", "google.com"]
       invalid = [
         Domain.new(name: "https://applicationjson", description: "hacker news", user_id: u.id),
         Domain.new(name: "https://x/latest", description: "music news", user_id: u.id),
