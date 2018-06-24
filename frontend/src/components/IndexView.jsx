@@ -16,11 +16,17 @@ class IndexView extends Component {
   }
 
   render(){
-    let domains = this.props.domains.domains.map((el, idx) => {
-      return <li idx={idx}>{el}</li>;
-    });
+    let domains = [];
+    if (this.props.domains.domains) {
+      domains = this.props.domains.domains.map((el, idx) => {
+        return <li key={idx}>{el.name}</li>;
+      });
+    }
+    let textErrors = <div className="errors">{this.props.errors}</div>;
+
     return (
       <div>
+        {textErrors}
         <h3>List of domains</h3>
         <ul>
           {domains}
