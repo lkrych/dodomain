@@ -33,7 +33,6 @@ class SignUpForm extends Component {
   }
 
   onSubmit(e) {
-    console.log("I'm being submitted!");
     e.preventDefault();
     if (!this.state.email) {
       return this.setState({
