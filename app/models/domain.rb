@@ -9,11 +9,15 @@ class Domain < ApplicationRecord
 
   def parse_domain
     begin
+      original_submission = name
+      name.gsub!(/https*:\/\// , "")
+      self.name = "http://" + self.name
       uri = URI.parse(name) #use ruby stdlib to create URI
       domain = PublicSuffix.parse(uri.host) #uses PublicSuffixList https://publicsuffix.org/
       self.name = domain.domain
-    rescue
-      raise "Not a valid domain!"
+    rescue => e
+      puts e, e.backtrace
+      raise "#{original_submission} is not a valid domain!"
     end
   end
 
@@ -21,8 +25,8 @@ class Domain < ApplicationRecord
     begin
       IPSocket::getaddress(name)
       return true
-    rescue
-      return false
+    rescue => e
+      raise "Could not find an entry in the DNS table for #{name}."
     end
   end
 end
