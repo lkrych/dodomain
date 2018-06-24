@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Header
+    logged_in={false}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Link
+          className="active"
+          replace={false}
+          to="/"
+>
+          Home
+</Link>,
+        " | ",
+        <Link
+          className="active"
+          id="login"
+          replace={false}
+          to="/login"
+>
+          Log In
+</Link>,
+        " | ",
+        <Link
+          className="active"
+          replace={false}
+          to="/signup"
+>
+          Sign Up
+</Link>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Home",
+          "className": "active",
+          "replace": false,
+          "to": "/",
+        },
+        "ref": null,
+        "rendered": "Home",
+        "type": [Function],
+      },
+      " | ",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Log In",
+          "className": "active",
+          "id": "login",
+          "replace": false,
+          "to": "/login",
+        },
+        "ref": null,
+        "rendered": "Log In",
+        "type": [Function],
+      },
+      " | ",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Sign Up",
+          "className": "active",
+          "replace": false,
+          "to": "/signup",
+        },
+        "ref": null,
+        "rendered": "Sign Up",
+        "type": [Function],
+      },
+    ],
+    "type": "nav",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Link
+            className="active"
+            replace={false}
+            to="/"
+>
+            Home
+</Link>,
+          " | ",
+          <Link
+            className="active"
+            id="login"
+            replace={false}
+            to="/login"
+>
+            Log In
+</Link>,
+          " | ",
+          <Link
+            className="active"
+            replace={false}
+            to="/signup"
+>
+            Sign Up
+</Link>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Home",
+            "className": "active",
+            "replace": false,
+            "to": "/",
+          },
+          "ref": null,
+          "rendered": "Home",
+          "type": [Function],
+        },
+        " | ",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Log In",
+            "className": "active",
+            "id": "login",
+            "replace": false,
+            "to": "/login",
+          },
+          "ref": null,
+          "rendered": "Log In",
+          "type": [Function],
+        },
+        " | ",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Sign Up",
+            "className": "active",
+            "replace": false,
+            "to": "/signup",
+          },
+          "ref": null,
+          "rendered": "Sign Up",
+          "type": [Function],
+        },
+      ],
+      "type": "nav",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
