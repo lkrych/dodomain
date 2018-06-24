@@ -3,6 +3,7 @@ import * as APIUtil from '../util/api_util';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const RECEIVE_DOMAINS = 'RECEIVE_DOMAINS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 const receiveDomains = (domains) => (
   {
@@ -11,15 +12,22 @@ const receiveDomains = (domains) => (
   }
 );
 
-const logIn = () => (
+const logIn = (errors) => (
   {
-    type: LOGIN
+    type: LOGIN,
+    errors
   }
 );
 
 const logOut = () => (
   {
     type: LOGOUT
+  }
+);
+
+const clearErrors = () => (
+  {
+    type: CLEAR_ERRORS
   }
 );
 
@@ -36,7 +44,7 @@ export const fetchDomains = (sortState, dispatch) => (
 );
 
 export const login = (loginInfo, dispatch) => (
-  APIUtil.login(loginInfo).then( () => dispatch(logIn())
+  APIUtil.login(loginInfo).then( errors => dispatch(logIn(errors))
 ));
 
 export const logout = (dispatch) => (
@@ -46,3 +54,7 @@ export const logout = (dispatch) => (
 export const signUp = (signupInfo, dispatch) => (
   APIUtil.signUp(signupInfo).then( () => dispatch(logIn())
 ));
+
+export const clearErrorsState = (dispatch) => (
+  dispatch(clearErrors())
+);
