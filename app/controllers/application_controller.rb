@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
   def authenticate_request!
     unless user_id_in_token?
       respond_to do |format|
-        format.html { render file: "#{Rails.root}/public/404.html" , status: 404 }
-        format.json { render json: { errors: 'Not Authenticated' }, status: :unauthorized }
+        format.json { render json: { session_errors: 'Not Authenticated' }, status: :unauthorized }
       end
       return
     end
