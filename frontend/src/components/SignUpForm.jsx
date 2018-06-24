@@ -1,6 +1,19 @@
 import React, {Component} from 'react';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 
-class LoginForm extends Component {
+
+const styles = theme => ({
+  root: theme.mixins.gutters({
+    paddingTop: theme.spacing.unit * 3,
+    paddingBottom: 16,
+  }),
+});
+
+class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.state =  {
@@ -53,23 +66,29 @@ class LoginForm extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     let textErrors = <div className="errors">{this.props.errors}</div>;
     return (
-      <div>
+      <Paper className={classes.root} elevation={4}>
         {textErrors}
+        <Typography variant="headline" gutterBottom>
+          Sign Up
+        </Typography>
         <form>
         <div className='field'>
-            <label> Email </label>
-            <br />
-            <input autoFocus='autofocus' type='email'
+            
+            <TextField autoFocus='autofocus'
+              label='email'
+              type='email'
               id='email' 
               onChange={this.onInput('email')}
               value={this.state.email} />
           </div>
           <div className='field' >
-            <label> Password </label>
-            <br />
-            <input autoComplete='off' type='password'
+            <TextField 
+              autoComplete='off' 
+              label='password'
+              type='password'
               id='password' 
               onChange={this.onInput('password')}
               value={this.state.password}
@@ -77,23 +96,29 @@ class LoginForm extends Component {
             </div>
 
           <div className='field' >
-            <label> Password Confirmation </label>
-            <br />
-            <input autoComplete='off' type='password'
+            
+            <TextField 
+              autoComplete='off'
+              type='password'
+              label="password_confirmation"
               id='password_confirmation' 
               onChange={this.onInput('password_confirmation')}
               value={this.state.password_confirmation}
                 />
             </div>
+            <br></br>
 
-          < input
+          <Button
             type="submit"
+            variant="contained" color="primary"
             className="btn btn-primary btn-submit"
-            onClick={this.onSubmit}/>
+            onClick={this.onSubmit}>
+            Sign Up
+          </Button>
         </form>
-      </div>
+      </Paper>
     );
   }
 }
 
-export default LoginForm;
+export default withStyles(styles)(SignUpForm);
