@@ -53,7 +53,7 @@ class LoginForm extends Component {
   }
 
   render() {
-    let textErrors = <div className="errors">{this.state.errors}</div>;
+    let textErrors = <div className="errors">{this.props.errors}</div>;
     return (
       <div>
         {textErrors}
