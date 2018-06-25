@@ -37,8 +37,10 @@ ShallowWrapper {
 >
           List of Valid Domains
 </WithStyles(Typography)>,
-        <div
-          className="errors"
+        <WithStyles(Typography)
+          color="error"
+          id="errors"
+          variant="body2"
 />,
         <WithStyles(Table)
           className={undefined}
@@ -66,13 +68,15 @@ ShallowWrapper {
           backIconButtonProps={
                     Object {
                               "aria-label": "Previous Page",
+                              "id": "back-button",
                             }
           }
           component="div"
-          count={0}
+          count={undefined}
           nextIconButtonProps={
                     Object {
                               "aria-label": "Next Page",
+                              "id": "forward-button",
                             }
           }
           onChangePage={[Function]}
@@ -105,14 +109,16 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
           "children": undefined,
-          "className": "errors",
+          "color": "error",
+          "id": "errors",
+          "variant": "body2",
         },
         "ref": null,
         "rendered": null,
-        "type": "div",
+        "type": [Function],
       },
       Object {
         "instance": null,
@@ -240,11 +246,13 @@ ShallowWrapper {
         "props": Object {
           "backIconButtonProps": Object {
             "aria-label": "Previous Page",
+            "id": "back-button",
           },
           "component": "div",
-          "count": 0,
+          "count": undefined,
           "nextIconButtonProps": Object {
             "aria-label": "Next Page",
+            "id": "forward-button",
           },
           "onChangePage": [Function],
           "page": 0,
@@ -273,8 +281,10 @@ ShallowWrapper {
 >
             List of Valid Domains
 </WithStyles(Typography)>,
-          <div
-            className="errors"
+          <WithStyles(Typography)
+            color="error"
+            id="errors"
+            variant="body2"
 />,
           <WithStyles(Table)
             className={undefined}
@@ -302,13 +312,15 @@ ShallowWrapper {
             backIconButtonProps={
                         Object {
                                     "aria-label": "Previous Page",
+                                    "id": "back-button",
                                   }
             }
             component="div"
-            count={0}
+            count={undefined}
             nextIconButtonProps={
                         Object {
                                     "aria-label": "Next Page",
+                                    "id": "forward-button",
                                   }
             }
             onChangePage={[Function]}
@@ -341,14 +353,16 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "class",
           "props": Object {
             "children": undefined,
-            "className": "errors",
+            "color": "error",
+            "id": "errors",
+            "variant": "body2",
           },
           "ref": null,
           "rendered": null,
-          "type": "div",
+          "type": [Function],
         },
         Object {
           "instance": null,
@@ -476,11 +490,13 @@ ShallowWrapper {
           "props": Object {
             "backIconButtonProps": Object {
               "aria-label": "Previous Page",
+              "id": "back-button",
             },
             "component": "div",
-            "count": 0,
+            "count": undefined,
             "nextIconButtonProps": Object {
               "aria-label": "Next Page",
+              "id": "forward-button",
             },
             "onChangePage": [Function],
             "page": 0,
