@@ -6,9 +6,6 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
-  ActiveRecord::Base.logger = Logger.new("log/active_record.log") #This outputs the mysql queries to a file named active_record.log under your project's log folder.
-
-
   # Do not eager load code on boot.
   config.eager_load = false
 
