@@ -12,7 +12,7 @@ module Dodomain
     config.load_defaults 5.1
 
     #autoload lib files, most importantly JWT
-    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.eager_load_paths << Rails.root.join('lib')
 
 
 
