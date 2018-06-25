@@ -25,7 +25,6 @@ class IndexView extends Component {
   handleChangePage (event, page){
     //don't pass in unneccessary parameters
     let submitState = Object.assign({}, this.state, {page: page+1});
-    console.log(`the page is ${page}`);
     delete submitState['itemsPerPage'];
     event.preventDefault();
     this.setState({ page: page + 1 }, () => {
