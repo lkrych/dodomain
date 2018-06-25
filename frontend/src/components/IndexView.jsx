@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,17 +7,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import Paper from '@material-ui/core/Paper';
-
-const styles = theme => ({
-  root: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
-  },
-  table: {
-    minWidth: 700,
-  },
-});
 
 class IndexView extends Component {
   constructor(props){
@@ -64,10 +52,10 @@ class IndexView extends Component {
               <TableCell >Created At</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {domains.map(n => {
+          <TableBody className="domain-list">
+            {domains.map((n, idx) => {
               return (
-                <TableRow key={n.id}>
+                <TableRow key={idx}>
                   <TableCell component="th" scope="row">
                     {n.name}
                   </TableCell>
@@ -97,4 +85,4 @@ class IndexView extends Component {
   }
 }
 
-export default withStyles(styles)(IndexView);
+export default IndexView;
