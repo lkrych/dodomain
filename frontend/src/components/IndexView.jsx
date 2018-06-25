@@ -22,12 +22,22 @@ class IndexView extends Component {
     this.handleChangePage = this.handleChangePage.bind(this);
   }
 
-  handleChangePage(){
-
+  handleChangePage (event, page){
+    //don't pass in unneccessary parameters
+    let submitState = Object.assign({}, this.state, {page: page+1});
+    console.log(`the page is ${page}`);
+    delete submitState['itemsPerPage'];
+    event.preventDefault();
+    this.setState({ page: page + 1 }, () => {
+      this.props.fetchDomains(submitState);
+    });
   }
 
   componentDidMount(){
-    this.props.fetchDomains(this.state);
+    //don't pass in unneccessary parameters
+    let submitState = Object.assign({}, this.state);
+    delete submitState['itemsPerPage'];
+    this.props.fetchDomains(submitState);
   }
 
   render(){
@@ -36,7 +46,7 @@ class IndexView extends Component {
     if (this.props.domains.domains) {
       domains = this.props.domains.domains;
     }
-    let textErrors = <div className="errors">{this.props.errors}</div>;
+    let textErrors = <Typography color="error" variant="body2" id="errors" >{this.props.errors}</Typography>;
 
     return (
       <Paper className={classes.root}>
@@ -68,15 +78,17 @@ class IndexView extends Component {
         </Table>
         <TablePagination
             component="div"
-            count={domains.length}
+            count={this.props.domains.pagination.totalItems}
             rowsPerPage={this.state.itemsPerPage}
             page={this.state.page - 1} //uses zero-based index
             rowsPerPageOptions={[50]}
             backIconButtonProps={{
               'aria-label': 'Previous Page',
+              'id': 'back-button'
             }}
             nextIconButtonProps={{
               'aria-label': 'Next Page',
+              'id': 'forward-button'
             }}
             onChangePage={this.handleChangePage}
           />
