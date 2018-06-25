@@ -5,7 +5,7 @@ import SignUpForm from '../../components/SignUpForm';
 
 describe('SignUpForm', () => {
   const mockSubmitForm = jest.fn();
-  const signUpForm = shallow(<SignUpForm signUp={mockSubmitForm} />);
+  const signUpForm = shallow(<SignUpForm signUp={mockSubmitForm} classes={{root:"blahStyle"}} />);
   
   it('renders correctly', () => {
     expect(signUpForm).toMatchSnapshot();
@@ -102,12 +102,12 @@ describe('SignUpForm', () => {
     });
 
     it('should be an empty string if there are no session_errors', () => {
-      expect(signUpForm.find('.errors').html()).toEqual("<div class=\"errors\"></div>");
+      expect(signUpForm.find('#errors').html()).not.toContain("there is an error");
     });
     
-    let signUpFormWithErrors = shallow(<SignUpForm signUp={mockSubmitForm} errors={"there is an error"}/>);
+    let signUpFormWithErrors = shallow(<SignUpForm signUp={mockSubmitForm} errors={"there is an error"} classes={{root:"blahStyle"}}/>);
     it('should be populated if there are session_errors', () => {
-      expect(signUpFormWithErrors.find('.errors').html()).toEqual("<div class=\"errors\">there is an error</div>");
+      expect(signUpFormWithErrors.find('#errors').html()).toContain("there is an error");
     });
   });
 

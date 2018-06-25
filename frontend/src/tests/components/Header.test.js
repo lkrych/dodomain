@@ -5,8 +5,8 @@ import Header from '../../components/reusable/Header';
 
 describe('Header', () => {
   
-  let loggedIn = shallow(<Header logged_in={true} />);
-  let loggedOut = shallow(<Header logged_in={false} />);
+  let loggedIn = shallow(<Header logged_in={true} classes={{root:"blahStyle"}}/>);
+  let loggedOut = shallow(<Header logged_in={false} classes={{root:"blahStyle"}} />);
   
   it('renders correctly', () => {
     expect(loggedOut).toMatchSnapshot();

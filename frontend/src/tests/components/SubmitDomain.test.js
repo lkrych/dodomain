@@ -5,7 +5,7 @@ import SubmitDomain from '../../components/SubmitDomain';
 
 describe('SubmitDomain', () => {
   const mockSubmitForm = jest.fn();
-  const submitDomain = shallow(<SubmitDomain submitDomain={mockSubmitForm} />);
+  const submitDomain = shallow(<SubmitDomain submitDomain={mockSubmitForm} classes={{root:"blahStyle"}} />);
   
   it('renders correctly', () => {
     expect(submitDomain).toMatchSnapshot();
@@ -56,12 +56,12 @@ describe('SubmitDomain', () => {
 
   describe('Error Text', () => {
     it('should be an empty string if there are no session_errors', () => {
-      expect(submitDomain.find('.errors').html()).toEqual("<div class=\"errors\"></div>");
+      expect(submitDomain.find('#errors').html()).not.toContain("there is an error");
     });
     
-    let submitDomainWithErrors = shallow(<SubmitDomain submitDomain={mockSubmitForm} errors={"there is an error"}/>);
+    let submitDomainWithErrors = shallow(<SubmitDomain submitDomain={mockSubmitForm} errors={"there is an error"} classes={{root:"blahStyle"}}/>);
     it('should be populated if there are session_errors', () => {
-      expect(submitDomainWithErrors.find('.errors').html()).toEqual("<div class=\"errors\">there is an error</div>");
+      expect(submitDomainWithErrors.find('#errors').html()).toContain("there is an error");
     });
   });
 });
