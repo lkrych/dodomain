@@ -3,15 +3,6 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-
-
-const styles = theme => ({
-  root: theme.mixins.gutters({
-    paddingTop: theme.spacing.unit * 3,
-    paddingBottom: 16,
-  }),
-});
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -76,7 +67,7 @@ class SignUpForm extends Component {
 
   render() {
     const { classes } = this.props;
-    let textErrors = <Typography color="error" variant="body2" >{this.props.errors ? this.props.errors : this.state.errors}</Typography>;
+    let textErrors = <Typography color="error" variant="body2" id="errors" >{this.props.errors ? this.props.errors : this.state.errors}</Typography>;
     let emailError = false;
     let passwordError = false;
     if (/Email/g.exec(this.state.errors) || /email/g.exec(this.props.errors)  ) {
@@ -140,4 +131,4 @@ class SignUpForm extends Component {
   }
 }
 
-export default withStyles(styles)(SignUpForm);
+export default SignUpForm;
