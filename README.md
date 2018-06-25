@@ -27,7 +27,7 @@ A Web Service that lets users track Web site domain names and accompanying descr
 
   In this section, I'd like to give a quick overview of the strategies I used to make Dodomain a fit these criteria. 
 
-  You can play with a production version of the app at [Dodomain](dodomain.herokuapp.com)
+  You can play with a production version of the app at [Dodomain](http://dodomain.herokuapp.com)
 
   1. **Pagination**:  One of the most common problems that developers run into when scaling web services is too much load on a database. Pagination is one technique that you can use to ensure that your database is always dealing with a limited load. The Dodomain backend will only serve 50 records at a time. This number is arbitrary, and can easily be changed by editing some constants in the frontend and backend. 
   
