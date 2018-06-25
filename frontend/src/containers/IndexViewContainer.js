@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import IndexView from '../components/IndexView';
+import {styledIndexView} from '../components/styledComponents/styledComponents';
 import {fetchDomains, clearErrorsState} from '../actions/actions';
 
 const mapStateToProps = state => ({
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => (
   }
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(IndexView);
+export default connect(mapStateToProps, mapDispatchToProps)(styledIndexView);

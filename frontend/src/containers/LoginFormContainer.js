@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import LoginForm from '../components/LoginForm';
+import {styledLoginForm} from '../components/styledComponents/styledComponents';
 import {login, clearErrorsState} from '../actions/actions';
 
 const mapStateToProps = state => ({
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => (
   }
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(styledLoginForm);

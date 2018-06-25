@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import Header from '../../components/reusable/Header';
 import {logout} from '../../actions/actions';
+import {styledHeader} from '../../components/styledComponents/styledComponents';
 
 const mapStateToProps = state => ({
   logged_in: state.session
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => (
   }
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(styledHeader);

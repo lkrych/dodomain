@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import SubmitDomain from '../components/SubmitDomain';
+import {styledSubmitDomain} from '../components/styledComponents/styledComponents';
 import {submitDomain, clearErrorsState} from '../actions/actions';
 
 const mapStateToProps = state => ({
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => (
   }
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(SubmitDomain);
+export default connect(mapStateToProps, mapDispatchToProps)(styledSubmitDomain);

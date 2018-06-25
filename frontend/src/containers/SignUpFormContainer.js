@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import SignUpForm from '../components/SignUpForm';
+import {styledSignUpForm} from '../components/styledComponents/styledComponents';
 import {signUp, clearErrorsState} from '../actions/actions';
 
 const mapStateToProps = state => ({
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => (
   }
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
+export default connect(mapStateToProps, mapDispatchToProps)(styledSignUpForm);
