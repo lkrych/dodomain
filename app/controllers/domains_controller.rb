@@ -46,6 +46,9 @@ class  DomainsController < ApplicationController
       logger.error "###############"
       logger.error "The backtrace for the domains_controller error: #{e} is \n #{e.backtrace}"
       logger.error "###############"
+      if e.to_s.match('Mysql2::Error: Duplicate entry') 
+        e = "Sorry, that domain already exists in the database."
+      end
       render json: {domain_errors: "An error occurred saving your domain: #{e}"}, status: :bad_request
     end
   end

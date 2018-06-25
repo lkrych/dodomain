@@ -255,6 +255,23 @@ RSpec.describe DomainsController, type: :controller do
         expect(Domain.count).to eq(1)
       end
 
+      it 'should not allow the saving of the same url with different cases' do
+        token = get_valid_token()
+        request.headers.merge! build_headers(token)
+
+        get :create, params: {:domain => {name: "https://www.yahoo.com", description: "a glorious new domain"}}, :format => 'json'
+        expect(response.status).to be(200)
+        expect(json(response)).to include('message')
+        expect(json(response)['message']).to eq("Domain successfully saved!")
+        expect(Domain.count).to eq(1)
+        get :create, params: {:domain => {name: "https://www.Yahoo.com", description: "a glorious new domain"}}, :format => 'json'
+        expect(response.status).to be(400)
+        expect(json(response)).to_not include('message')
+        expect(json(response)['domain_errors']).to match("An error occurred saving your domain")
+        expect(Domain.count).to eq(1)
+
+      end
+
       context 'with valid urls' do
 
         it 'should strip all url elements from submission' do
