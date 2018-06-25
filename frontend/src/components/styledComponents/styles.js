@@ -13,19 +13,13 @@ export const headerStyles = theme => ({
   }
 });
 
-export const homePageStyles = theme => ({
-  root: theme.mixins.gutters({
-    paddingTop: theme.spacing.unit * 3,
-    paddingBottom: 16,
-  }),
-});
 
 export const indexViewStyles  = theme => ({
-  root: {
+  root: theme.mixins.gutters({
     width: '100%',
     paddingTop: theme.spacing.unit * 3,
     overflowX: 'auto',
-  },
+  }),
   table: {
     minWidth: 700,
   },
