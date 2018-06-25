@@ -11,14 +11,13 @@ class  DomainsController < ApplicationController
       @order_by = index_params[:order_by] ||= :id
       ordering = @order_by.to_s + ' ' + (@desc ? Constants::DESC : Constants::ASC)
       domains = Domain.search(@search_query)
-      count = domains.size
-      @total = count % 50 == 0 ? count / 50 : count / 50 + 1
-      @domains = domains.order(ordering).limit(50).offset(offset * 50)
+      @count = domains.size
+      @domains = domains.order(ordering).limit(Constants::ITEMSPERPAGE).offset(offset * Constants::ITEMSPERPAGE)
 
       render :json => {
         domains: @domains,
         pagination: {
-          totalPages: @total,
+          totalItems: @count,
           page: @page,
           search_query: @search_query,
           desc: @desc,
