@@ -3,6 +3,8 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import { emailRegex } from '../util/emailRegex';
+
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -28,22 +30,22 @@ class SignUpForm extends Component {
     if (!this.state.email) {
       return this.setState({
         errors: 'Email is required.',
-        message: undefined,
-        disableSubmit: false
       });
     }
+    if (!emailRegex.exec(this.state.email)) {
+      return this.setState({
+        errors: 'Email is not a valid format.',
+      });
+    }
+
     if (this.state.password !== this.state.password_confirmation) {
       return this.setState({
         errors: 'Passwords must match.',
-        message: undefined,
-        disableSubmit: false
       });
     }
     if (this.state.password.length < 6 || this.state.password.length > 20 ) {
       return this.setState({
         errors: 'Passwords should be at least 6 characters and have fewer than 20 characters.',
-        message: undefined,
-        disableSubmit: false
       });
     }
     this.props.signUp({
