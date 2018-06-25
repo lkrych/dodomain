@@ -36,7 +36,7 @@ RSpec.describe AuthenticationController, type: :controller do
 
         expect(response.status).to be(401)
         expect(response.content_type).to eq "application/json"
-        expect(json(response)['errors']).to include('There is no account associated with this email')
+        expect(json(response)['session_errors']).to include('There is no account associated with this email')
       end
 
       it 'should indicate that password is incorrect if inputted password doesnt match password_digest on file ' do
@@ -45,7 +45,7 @@ RSpec.describe AuthenticationController, type: :controller do
 
         expect(response.status).to be(401)
         expect(response.content_type).to eq "application/json"
-        expect(json(response)['errors']).to include('Incorrect Password')
+        expect(json(response)['session_errors']).to include('Incorrect Password')
       end
 
     end    
@@ -64,7 +64,7 @@ RSpec.describe AuthenticationController, type: :controller do
     it "should return an error the user has already signed up" do
       post :sign_up, params: {:user => {email: @u.email, password: @u.password}}
       expect(response.status).to eq(401)
-      expect(json(response)['errors']).to eq(["An account has already been created with this email"])
+      expect(json(response)['session_errors']).to eq("An account has already been created with this email")
     end
 
   end
