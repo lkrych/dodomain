@@ -59,6 +59,8 @@ describe('SignUpForm', () => {
       signUpForm.find('#email').simulate('change', { target: { value: ''} });
       signUpForm.find('#password').simulate('change', { target: { value: ''} });
       signUpForm.find('#password_confirmation').simulate('change', { target: { value: ''} });
+      signUpForm.setState({errors: ''});
+
     });
 
     const mockedEvent = { target: {}, preventDefault: jest.fn() };
@@ -82,7 +84,6 @@ describe('SignUpForm', () => {
       signUpForm.find('#password').simulate('change', { target: { value: 'pass'} });
       signUpForm.find('#password_confirmation').simulate('change', { target: { value: 'pass'} });
       signUpForm.find('.btn-submit').simulate('click', mockedEvent);
-
       expect(signUpForm.state().errors).toEqual("Passwords should be at least 6 characters and have fewer than 20 characters.");
     });
 
@@ -93,6 +94,16 @@ describe('SignUpForm', () => {
       signUpForm.find('.btn-submit').simulate('click', mockedEvent);
 
       expect(signUpForm.state().errors).toEqual("Passwords should be at least 6 characters and have fewer than 20 characters.");
+    });
+
+    it('should populate the errors `state` if email isnt valid', () => {
+      signUpForm.find('#email').simulate('change', { target: { value: '@email.com'} });
+      signUpForm.find('#password').simulate('change', { target: { value: 'password'} });
+      signUpForm.find('#password_confirmation').simulate('change', { target: { value: 'password'} });
+      signUpForm.find('.btn-submit').simulate('click', mockedEvent);
+
+      expect(signUpForm.state().errors).toEqual('Email is not a valid format.');
+
     });
   });
 

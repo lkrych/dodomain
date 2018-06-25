@@ -32,12 +32,6 @@ class SignUpForm extends Component {
         errors: 'Email is required.',
       });
     }
-    if (!emailRegex.exec(this.state.email)) {
-      return this.setState({
-        errors: 'Email is not a valid format.',
-      });
-    }
-
     if (this.state.password !== this.state.password_confirmation) {
       return this.setState({
         errors: 'Passwords must match.',
@@ -46,6 +40,11 @@ class SignUpForm extends Component {
     if (this.state.password.length < 6 || this.state.password.length > 20 ) {
       return this.setState({
         errors: 'Passwords should be at least 6 characters and have fewer than 20 characters.',
+      });
+    }
+    if (!emailRegex.test(this.state.email)) {
+      return this.setState({
+        errors: 'Email is not a valid format.',
       });
     }
     this.props.signUp({
