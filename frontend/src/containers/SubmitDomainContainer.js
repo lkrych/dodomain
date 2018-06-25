@@ -5,7 +5,8 @@ import {submitDomain, clearErrorsState} from '../actions/actions';
 
 const mapStateToProps = state => ({
   domains: state.domains,
-  errors: state.errors.domain_errors
+  errors: state.errors.domain_errors,
+  message: state.domains.message
 });
 
 const mapDispatchToProps = dispatch => (
