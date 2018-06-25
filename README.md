@@ -199,7 +199,11 @@ def authenticate_request!
 
 #### components directory
 
-  All of the views for the app live in this folder. 
+  All of the views for the app live in this folder.
+
+##### What is the styledComponents directory? 
+
+  The UI library that I am using `material-ui` wraps the components that it styles. I separated this logic into the `styledComponents.js` file so that I could test the pure actions of the components in the `components` directory and not the wrapped components. 
 
 #### containers directory
 
