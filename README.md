@@ -6,17 +6,32 @@ Dodomain is built with Ruby on Rails, React, MySQL, RSpec, Jest and Enzyme
 ![dodo painting](/frontend/src/resources/images/dodo.jpg "Dodomain")
 
 
-### Quick Guide
+## Quick Guide
+ * [Overview](#overview-of-dodomain)
  * [DB Setup](#db-setup)
  * [DB Tables](#db-tables)
  * [Authentication](#authentication)
+ * [Domain Validation](#domain-validation)
  * [Backend Testing](#backend-testing)
  * [Frontend Orientation](#frontend-orientation)
  * [Frontend Testing](#frontend-testing)
  * [Future Steps](#future-steps)
 
 
-### DB Setup 
+ ## Overview of Dodomain
+
+  The purpose of Dodomain is to be a web service that tracks website domains and accompanying descriptions. It is supposed to scale well, and be able to support many hundreds of thousands of users. 
+
+  In this section, I'd like to give a quick overview of the strategies I used to make Dodomain a successful webservice. 
+
+  1. **Pagination**:  One of the most common problems with scaling web services is too much load on a database. Pagination is one technique that you can use to ensure that your database is always dealing with a limited load. In the Dodomain case, the backend will only serve 50 records at a time. This number is arbitrary, and can easily be changed by editing some constants in the frontend and backend. 
+  
+  2. **Testing Infrastructure**: One of the qualities that I wanted to highlight about my engineering skillset is my ability to set up a robust testing infrastructure for both the frontend and the backend. Testing is extremely important for maintaining usable systems because it provides documentation, and ensures that the introduction of new features does not disrupt the functioning of old features.
+
+  3. **Documentation**: Testing provides documentation about the nitty gritty aspects of how a system should work, but it is also essential to provide more robust documentation for future developers that are going to contribute to a project. While I would not consider this README to be complete, I would say that it provides a good lay of the land. 
+
+
+## DB Setup 
 
   Dodomain is using `mysql v 8.0.11`
 
@@ -30,9 +45,9 @@ Dodomain is built with Ruby on Rails, React, MySQL, RSpec, Jest and Enzyme
 
   The SQL was run using Rails migrations, which you can view in the ./db/migrate file.
 
-### DB Tables
+## DB Tables
 
-#### Users table
+### Users table
 
   The users table has 6 fields:
   1. id ~ primary key
@@ -51,7 +66,7 @@ Dodomain is built with Ruby on Rails, React, MySQL, RSpec, Jest and Enzyme
 ```sql
   CREATE UNIQUE INDEX "index_users_on_email"  ON "users" ("email")
 ```
-#### Domains Table
+### Domains Table
 
   The domains table has 6 fields:
   1. id ~ primary key
@@ -77,7 +92,7 @@ Dodomain is built with Ruby on Rails, React, MySQL, RSpec, Jest and Enzyme
 
   If you would like to view the SQL commands used on this database in more detail, please read the active_record log in ./log/active_record.log
 
-### Authentication
+## Authentication
 
   Authentication for Dodomain uses JSON web tokens (JWTs) that expire after one day of use. 
 
@@ -104,7 +119,7 @@ Dodomain is built with Ruby on Rails, React, MySQL, RSpec, Jest and Enzyme
   end
 ```
 
-### Authenticating an incoming request
+## Authenticating an incoming request
 
   An incoming request to the API utilize the `authenticate_request!` filter in the ApplicationController `app/controllers/application_controller.rb`
 
@@ -140,7 +155,40 @@ def authenticate_request!
   end
 ```
 
-### Frontend Orientation
+## Domain Validation
+
+  I use a fairly simple strategy for validating domains in dodomain. The crux of which centers around two methods on my Domain model: `parse_domain` and `check_if_valid_domain`.
+
+  ```ruby
+      def parse_domain
+          begin
+            original_submission = name
+            name.gsub!(/https*:\/\// , "")
+            self.name = "http://" + self.name
+            uri = URI.parse(name) #use ruby stdlib to create URI
+            domain = PublicSuffix.parse(uri.host) #uses PublicSuffixList https://publicsuffix.org/
+            self.name = domain.domain
+          rescue => e
+            puts e, e.backtrace
+            raise "#{original_submission} is not a valid domain!"
+          end
+        end
+
+        def check_if_valid_domain #make request to DNS Lookup API
+          begin
+            IPSocket::getaddress(name)
+            return true
+          rescue => e
+            raise "Could not find an entry in the DNS table for #{name}."
+          end
+        end
+  ```
+
+  `parse_domain` is used to clean the user input. It removes any references to the http     protocol (in case there are duplicates). A singular protocol string is added to the     front of the user input so that it can be parsed by the Ruby URI library. This library  has the ability to break down a URI into its host (the domain), and then I crosscheck to see which or not the host has a valid Public Suffix. If it does, it is saved as the name in our database table. If this check fails, we return an error message in the api call.
+
+  `check_if_valid_domain` is used to contact the DNS with our shiny new domain name. It utilizes the IPSocket class to look up the address of our domain name. IF this address exists, we return that it is valid, if not we raise an error.
+
+# Frontend Orientation
 
 ## Start working with the code
 
@@ -151,6 +199,7 @@ def authenticate_request!
   With this setup, changes you make in the source code will be reloaded in an open application. If you choose to work with your code in a production build, you will need to rebuild the project to see the changes.
 
 * Clone the repo
+* `cd dodomain`
 * `bundle install` - Install all necessary Rails dependencies
 * `rails s -p 3001`- Start the Rails server on port 3001
 * `cd frontend`
@@ -162,7 +211,9 @@ def authenticate_request!
 
 ### Running your code locally with a production build
 
-* Clone the repo and run `npm postinstall`
+* Clone the repo
+* `cd dodomain`
+* run `npm postinstall`
 * Run `rails s`
 * Go to your browser and view the app at localhost:3000
 
@@ -201,7 +252,7 @@ def authenticate_request!
 
   All of the views for the app live in this folder.
 
-##### What is the styledComponents directory? 
+#### What is the styledComponents directory? 
 
   The UI library that I am using `material-ui` wraps the components that it styles. I separated this logic into the `styledComponents.js` file so that I could test the pure actions of the components in the `components` directory and not the wrapped components. 
 
@@ -262,8 +313,14 @@ def authenticate_request!
 
   The frontend testing suite uses Jest, Enzyme. It is primarily used to ensure that frontend routing works.
 
-  Jest is the test runner, it can be initiated using the `npm run test` command in the `/frontend folder`. I use Jest's built-in matchers and Enzyme methods and mocks to test the frontend.
+  Jest is the test runner, it can be initiated using the `npm run test` command in the `/frontend` folder. I use Jest's built-in matchers and Enzyme methods and mocks to test the frontend.
 
   Enzyme is a testing utilities library that provides useful helper functions for working with the virtual DOM.
 
 ### Future Steps
+
+  I didn't quite get to a couple of features that I wanted to this weekend, but here are a few things I would do to make Dodomain a better service.
+
+  1. **Searching and Sorting**: If you look in the domains_controller_spec, you will see that I have already enabled searching and sorting via url_query params on the `#index` action. A nice feature for dodomain v1.1 would be a search bar at the top of the index page, and a toggle sorter for the columns in the table. 
+
+  2. **Continuous Integration**: All of the testing frameworks are set up, a convenient feature to ensure the maintainability of dodomain would be to set up a Continuous Integration client like Travis to ensure that any push to production would run all of the tests in our system. 
