@@ -24,6 +24,8 @@ Dodomain is built with Ruby on Rails, React, MySQL, RSpec, Jest and Enzyme
 
   In this section, I'd like to give a quick overview of the strategies I used to make Dodomain a fit these criteria. 
 
+  You can play with a production version of the app at [Dodomain](dodomain.herokuapp.com)
+
   1. **Pagination**:  One of the most common problems that developers run into when scaling web services is too much load on a database. Pagination is one technique that you can use to ensure that your database is always dealing with a limited load. The Dodomain backend will only serve 50 records at a time. This number is arbitrary, and can easily be changed by editing some constants in the frontend and backend. 
   
   2. **Testing Infrastructure**: One of the qualities that I wanted to highlight about my engineering skillset is my ability to set up a robust testing infrastructure for both the frontend and the backend. Testing is extremely important for maintaining systems because it provides documentation, and ensures that the introduction of new features does not disrupt the function of old features.
@@ -87,9 +89,6 @@ Dodomain is built with Ruby on Rails, React, MySQL, RSpec, Jest and Enzyme
 ```sql
   CREATE UNIQUE INDEX "index_domains_on_name"  ON "domains" ("name")
 ```
-### Accessing DB Logs
-
-  If you would like to view the SQL commands used on this database in more detail, please read the active_record log in ./log/active_record.log
 
 ## Authentication
 
