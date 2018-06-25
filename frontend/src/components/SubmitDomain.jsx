@@ -34,6 +34,8 @@ class SubmitDomain extends Component {
   render(){
     const { classes } = this.props;
     let textErrors = <Typography color="error" variant="body2" id="errors" >{this.props.errors ? this.props.errors : this.state.errors}</Typography>;
+    let textSuccess= <Typography color="primary" variant="body2" id="messages" >{this.props.message}</Typography>;
+
     let domainError = false;
     
     if (/Email/g.exec(this.state.errors) || /email/g.exec(this.props.errors)  ) {
@@ -49,6 +51,7 @@ class SubmitDomain extends Component {
           Domain Name ex: "npr.org"
         </Typography> 
         {textErrors}
+        {textSuccess}
         <form action="">
           <div className='field'>
             <TextField
