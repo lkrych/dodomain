@@ -1,18 +1,9 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/core/styles';
 
 import dodo from "../resources/images/dodo.jpg";
 
-
-
-const styles = theme => ({
-  root: theme.mixins.gutters({
-    paddingTop: theme.spacing.unit * 3,
-    paddingBottom: 16,
-  }),
-});
 
 class HomePage extends React.Component {
   render() {
@@ -32,4 +23,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default withStyles(styles)(HomePage);
+export default HomePage;
