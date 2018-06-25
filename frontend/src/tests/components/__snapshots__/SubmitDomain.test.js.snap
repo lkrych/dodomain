@@ -42,6 +42,11 @@ ShallowWrapper {
           id="errors"
           variant="body2"
 />,
+        <WithStyles(Typography)
+          color="primary"
+          id="messages"
+          variant="body2"
+/>,
         <form
           action=""
 >
@@ -126,6 +131,20 @@ ShallowWrapper {
           "children": undefined,
           "color": "error",
           "id": "errors",
+          "variant": "body2",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": undefined,
+          "color": "primary",
+          "id": "messages",
           "variant": "body2",
         },
         "ref": null,
@@ -311,6 +330,11 @@ ShallowWrapper {
             id="errors"
             variant="body2"
 />,
+          <WithStyles(Typography)
+            color="primary"
+            id="messages"
+            variant="body2"
+/>,
           <form
             action=""
 >
@@ -395,6 +419,20 @@ ShallowWrapper {
             "children": undefined,
             "color": "error",
             "id": "errors",
+            "variant": "body2",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": undefined,
+            "color": "primary",
+            "id": "messages",
             "variant": "body2",
           },
           "ref": null,

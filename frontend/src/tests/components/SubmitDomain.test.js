@@ -64,4 +64,15 @@ describe('SubmitDomain', () => {
       expect(submitDomainWithErrors.find('#errors').html()).toContain("there is an error");
     });
   });
+
+  describe('Success Message Text', () => {
+    it('should be an empty string if there are no messages', () => {
+      expect(submitDomain.find('#messages').html()).not.toContain("success!");
+    });
+    
+    let submitDomainWithErrors = shallow(<SubmitDomain submitDomain={mockSubmitForm} message={"success!"} classes={{root:"blahStyle"}}/>);
+    it('should be populated if there are session_errors', () => {
+      expect(submitDomainWithErrors.find('#messages').html()).toContain("success!");
+    });
+  });
 });
