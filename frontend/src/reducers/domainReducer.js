@@ -12,7 +12,6 @@ const _defaultDomains = {
 };
 
 const domainReducer = (state = _defaultDomains, action) => {
-  console.log(action);
   switch(action.type) {
     case RECEIVE_DOMAINS: 
       let domains = Array.isArray(action.domains.domains) ?  action.domains.domains : [];
