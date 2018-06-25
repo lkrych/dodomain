@@ -22,14 +22,13 @@ Dodomain is built with Ruby on Rails, React, MySQL, RSpec, Jest and Enzyme
 
   The purpose of Dodomain is to be a web service that tracks website domains and accompanying descriptions. It is supposed to scale well, and be able to support many hundreds of thousands of users. 
 
-  In this section, I'd like to give a quick overview of the strategies I used to make Dodomain a successful webservice. 
+  In this section, I'd like to give a quick overview of the strategies I used to make Dodomain a fit these criteria. 
 
-  1. **Pagination**:  One of the most common problems with scaling web services is too much load on a database. Pagination is one technique that you can use to ensure that your database is always dealing with a limited load. In the Dodomain case, the backend will only serve 50 records at a time. This number is arbitrary, and can easily be changed by editing some constants in the frontend and backend. 
+  1. **Pagination**:  One of the most common problems that developers run into when scaling web services is too much load on a database. Pagination is one technique that you can use to ensure that your database is always dealing with a limited load. The Dodomain backend will only serve 50 records at a time. This number is arbitrary, and can easily be changed by editing some constants in the frontend and backend. 
   
-  2. **Testing Infrastructure**: One of the qualities that I wanted to highlight about my engineering skillset is my ability to set up a robust testing infrastructure for both the frontend and the backend. Testing is extremely important for maintaining usable systems because it provides documentation, and ensures that the introduction of new features does not disrupt the functioning of old features.
+  2. **Testing Infrastructure**: One of the qualities that I wanted to highlight about my engineering skillset is my ability to set up a robust testing infrastructure for both the frontend and the backend. Testing is extremely important for maintaining systems because it provides documentation, and ensures that the introduction of new features does not disrupt the function of old features.
 
-  3. **Documentation**: Testing provides documentation about the nitty gritty aspects of how a system should work, but it is also essential to provide more robust documentation for future developers that are going to contribute to a project. While I would not consider this README to be complete, I would say that it provides a good lay of the land. 
-
+  3. **Documentation**: Testing provides documentation about the nitty gritty aspects of how a system should work, but it is also essential to provide more robust documentation for future developers that are going to contribute to a project. 
 
 ## DB Setup 
 
@@ -43,7 +42,7 @@ Dodomain is built with Ruby on Rails, React, MySQL, RSpec, Jest and Enzyme
 
   I created two tables for this application: users and domains
 
-  The SQL was run using Rails migrations, which you can view in the ./db/migrate file.
+  The SQL was run using Rails migrations, which you can view in the `./db/migrate` file.
 
 ## DB Tables
 
@@ -96,13 +95,13 @@ Dodomain is built with Ruby on Rails, React, MySQL, RSpec, Jest and Enzyme
 
   Authentication for Dodomain uses JSON web tokens (JWTs) that expire after one day of use. 
 
-  A JWT is created when a user signs up or signs into the application, and they are sent a blank JWT when they logout. 
+  A JWT is created when a user signs up or signs into the application.
 
   The authentication machinery can be found in four places in this repository. Authentication related endpoints(SignIn aka getToken, SignUp and LogOut) are found in the AuthenticationController: `app/controllers/authentication_controller.rb`. 
 
   These endpoints use User defined methods that can be found in the User model: `app/models/user.rb` and the JsonWebToken class, a wrapper for the jwt library, which is defined in the lib folder `lib/json_web_token`.
 
-  Two important methods on the User model are the `encrypt_password` function that takes in the plaintext user password and generates a password_digest from it which is stored in the user table, and the `match_password` function that is used in the sign request to compare an user-entered password to the password_digest on file.
+  Two important methods on the User model are the `encrypt_password` function that takes  the plaintext user password and generates a password_digest from it which is stored in the user table, and the `match_password` function that is used in the sign in request to compare an user-entered password to the password_digest on file.
 
 ```ruby
   #these methods are defined on the user model
@@ -157,7 +156,7 @@ def authenticate_request!
 
 ## Domain Validation
 
-  I use a fairly simple strategy for validating domains in dodomain. The crux of which centers around two methods on my Domain model: `parse_domain` and `check_if_valid_domain`.
+  I use a fairly simple strategy for validating domains in Dodomain. The crux of which centers around two methods on my Domain model: `parse_domain` and `check_if_valid_domain`.
 
   ```ruby
       def parse_domain
@@ -184,15 +183,17 @@ def authenticate_request!
         end
   ```
 
-  `parse_domain` is used to clean the user input. It removes any references to the http     protocol (in case there are duplicates). A singular protocol string is added to the     front of the user input so that it can be parsed by the Ruby URI library. This library  has the ability to break down a URI into its host (the domain), and then I crosscheck to see which or not the host has a valid Public Suffix. If it does, it is saved as the name in our database table. If this check fails, we return an error message in the api call.
+  `parse_domain` is used to clean the user input. It removes any references to the http     protocol (in case there are duplicates). A singular protocol string is added to the     front of the user input so that it can be parsed by the Ruby URI library. This library  has the ability to break down a URI into its host (the domain), and then I crosscheck to see whether or not the host has a valid Public Suffix. If it does, it is saved as the name in our database table. If this check fails, we return an error message in the api call.
 
-  `check_if_valid_domain` is used to contact the DNS with our shiny new domain name. It utilizes the IPSocket class to look up the address of our domain name. IF this address exists, we return that it is valid, if not we raise an error.
+  `check_if_valid_domain` is used to contact the DNS with our shiny new domain name. It utilizes the IPSocket class to look up the address of our domain name. If this address exists, we return that it is valid, if not we raise an error.
 
 # Frontend Orientation
 
 ## Start working with the code
 
   To start working with this code, you will need to have [Node and npm](https://www.npmjs.com/) installed.
+
+  If you are interested in playing around with Dodomain on your local machine, please follow the steps below!
 
 ### Running your code locally with a proxy server (preferred option)
 
@@ -215,7 +216,7 @@ def authenticate_request!
 * `cd dodomain`
 * run `npm postinstall`
 * Run `rails s`
-* Go to your browser and view the app at localhost:3000
+* Go to your browser and view the production build app at localhost:3000
 
 
 # A short tour of the React frontend
