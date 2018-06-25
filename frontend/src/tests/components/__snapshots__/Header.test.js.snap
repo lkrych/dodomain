@@ -4,7 +4,12 @@ exports[`Header renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <WithStyles(Header)
+  Symbol(enzyme.__unrendered__): <Header
+    classes={
+        Object {
+            "root": "blahStyle",
+          }
+    }
     logged_in={false}
 />,
   Symbol(enzyme.__renderer__): Object {
@@ -17,37 +22,595 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "host",
     "props": Object {
-      "classes": Object {
-        "button": "Header-button-3",
-        "flex": "Header-flex-2",
-        "link": "Header-link-4",
-        "root": "Header-root-1",
-      },
-      "logged_in": false,
+      "children": <WithStyles(AppBar)
+        position="static"
+>
+        <WithStyles(Toolbar)>
+                <WithStyles(Typography)
+                        className={undefined}
+                        color="inherit"
+                        variant="title"
+                >
+                        Dodomain
+                </WithStyles(Typography)>
+                <Link
+                        className={undefined}
+                        replace={false}
+                        to="/"
+                >
+                        <WithStyles(Button)
+                                className={undefined}
+                                color="primary"
+                                variant="contained"
+                        >
+                                Home
+                        </WithStyles(Button)>
+                </Link>
+                <Link
+                        className={undefined}
+                        id="login"
+                        replace={false}
+                        to="/login"
+                >
+                        <WithStyles(Button)
+                                className={undefined}
+                                color="primary"
+                                variant="contained"
+                        >
+                                Log In
+                        </WithStyles(Button)>
+                </Link>
+                <Link
+                        className={undefined}
+                        replace={false}
+                        to="/signup"
+                >
+                        <WithStyles(Button)
+                                className={undefined}
+                                color="primary"
+                                variant="contained"
+                        >
+                                Sign Up
+                        </WithStyles(Button)>
+                </Link>
+        </WithStyles(Toolbar)>
+</WithStyles(AppBar)>,
+      "className": "blahStyle",
     },
     "ref": null,
-    "rendered": null,
-    "type": [Function],
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <WithStyles(Toolbar)>
+          <WithStyles(Typography)
+                    className={undefined}
+                    color="inherit"
+                    variant="title"
+          >
+                    Dodomain
+          </WithStyles(Typography)>
+          <Link
+                    className={undefined}
+                    replace={false}
+                    to="/"
+          >
+                    <WithStyles(Button)
+                              className={undefined}
+                              color="primary"
+                              variant="contained"
+                    >
+                              Home
+                    </WithStyles(Button)>
+          </Link>
+          <Link
+                    className={undefined}
+                    id="login"
+                    replace={false}
+                    to="/login"
+          >
+                    <WithStyles(Button)
+                              className={undefined}
+                              color="primary"
+                              variant="contained"
+                    >
+                              Log In
+                    </WithStyles(Button)>
+          </Link>
+          <Link
+                    className={undefined}
+                    replace={false}
+                    to="/signup"
+          >
+                    <WithStyles(Button)
+                              className={undefined}
+                              color="primary"
+                              variant="contained"
+                    >
+                              Sign Up
+                    </WithStyles(Button)>
+          </Link>
+</WithStyles(Toolbar)>,
+        "position": "static",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <WithStyles(Typography)
+              className={undefined}
+              color="inherit"
+              variant="title"
+>
+              Dodomain
+</WithStyles(Typography)>,
+            <Link
+              className={undefined}
+              replace={false}
+              to="/"
+>
+              <WithStyles(Button)
+                            className={undefined}
+                            color="primary"
+                            variant="contained"
+              >
+                            Home
+              </WithStyles(Button)>
+</Link>,
+            <Link
+              className={undefined}
+              id="login"
+              replace={false}
+              to="/login"
+>
+              <WithStyles(Button)
+                            className={undefined}
+                            color="primary"
+                            variant="contained"
+              >
+                            Log In
+              </WithStyles(Button)>
+</Link>,
+            <Link
+              className={undefined}
+              replace={false}
+              to="/signup"
+>
+              <WithStyles(Button)
+                            className={undefined}
+                            color="primary"
+                            variant="contained"
+              >
+                            Sign Up
+              </WithStyles(Button)>
+</Link>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Dodomain",
+              "className": undefined,
+              "color": "inherit",
+              "variant": "title",
+            },
+            "ref": null,
+            "rendered": "Dodomain",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(Button)
+                className={undefined}
+                color="primary"
+                variant="contained"
+>
+                Home
+</WithStyles(Button)>,
+              "className": undefined,
+              "replace": false,
+              "to": "/",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Home",
+                "className": undefined,
+                "color": "primary",
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": "Home",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(Button)
+                className={undefined}
+                color="primary"
+                variant="contained"
+>
+                Log In
+</WithStyles(Button)>,
+              "className": undefined,
+              "id": "login",
+              "replace": false,
+              "to": "/login",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Log In",
+                "className": undefined,
+                "color": "primary",
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": "Log In",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(Button)
+                className={undefined}
+                color="primary"
+                variant="contained"
+>
+                Sign Up
+</WithStyles(Button)>,
+              "className": undefined,
+              "replace": false,
+              "to": "/signup",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Sign Up",
+                "className": undefined,
+                "color": "primary",
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": "Sign Up",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "host",
       "props": Object {
-        "classes": Object {
-          "button": "Header-button-3",
-          "flex": "Header-flex-2",
-          "link": "Header-link-4",
-          "root": "Header-root-1",
-        },
-        "logged_in": false,
+        "children": <WithStyles(AppBar)
+          position="static"
+>
+          <WithStyles(Toolbar)>
+                    <WithStyles(Typography)
+                              className={undefined}
+                              color="inherit"
+                              variant="title"
+                    >
+                              Dodomain
+                    </WithStyles(Typography)>
+                    <Link
+                              className={undefined}
+                              replace={false}
+                              to="/"
+                    >
+                              <WithStyles(Button)
+                                        className={undefined}
+                                        color="primary"
+                                        variant="contained"
+                              >
+                                        Home
+                              </WithStyles(Button)>
+                    </Link>
+                    <Link
+                              className={undefined}
+                              id="login"
+                              replace={false}
+                              to="/login"
+                    >
+                              <WithStyles(Button)
+                                        className={undefined}
+                                        color="primary"
+                                        variant="contained"
+                              >
+                                        Log In
+                              </WithStyles(Button)>
+                    </Link>
+                    <Link
+                              className={undefined}
+                              replace={false}
+                              to="/signup"
+                    >
+                              <WithStyles(Button)
+                                        className={undefined}
+                                        color="primary"
+                                        variant="contained"
+                              >
+                                        Sign Up
+                              </WithStyles(Button)>
+                    </Link>
+          </WithStyles(Toolbar)>
+</WithStyles(AppBar)>,
+        "className": "blahStyle",
       },
       "ref": null,
-      "rendered": null,
-      "type": [Function],
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <WithStyles(Toolbar)>
+            <WithStyles(Typography)
+                        className={undefined}
+                        color="inherit"
+                        variant="title"
+            >
+                        Dodomain
+            </WithStyles(Typography)>
+            <Link
+                        className={undefined}
+                        replace={false}
+                        to="/"
+            >
+                        <WithStyles(Button)
+                                    className={undefined}
+                                    color="primary"
+                                    variant="contained"
+                        >
+                                    Home
+                        </WithStyles(Button)>
+            </Link>
+            <Link
+                        className={undefined}
+                        id="login"
+                        replace={false}
+                        to="/login"
+            >
+                        <WithStyles(Button)
+                                    className={undefined}
+                                    color="primary"
+                                    variant="contained"
+                        >
+                                    Log In
+                        </WithStyles(Button)>
+            </Link>
+            <Link
+                        className={undefined}
+                        replace={false}
+                        to="/signup"
+            >
+                        <WithStyles(Button)
+                                    className={undefined}
+                                    color="primary"
+                                    variant="contained"
+                        >
+                                    Sign Up
+                        </WithStyles(Button)>
+            </Link>
+</WithStyles(Toolbar)>,
+          "position": "static",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Typography)
+                className={undefined}
+                color="inherit"
+                variant="title"
+>
+                Dodomain
+</WithStyles(Typography)>,
+              <Link
+                className={undefined}
+                replace={false}
+                to="/"
+>
+                <WithStyles(Button)
+                                className={undefined}
+                                color="primary"
+                                variant="contained"
+                >
+                                Home
+                </WithStyles(Button)>
+</Link>,
+              <Link
+                className={undefined}
+                id="login"
+                replace={false}
+                to="/login"
+>
+                <WithStyles(Button)
+                                className={undefined}
+                                color="primary"
+                                variant="contained"
+                >
+                                Log In
+                </WithStyles(Button)>
+</Link>,
+              <Link
+                className={undefined}
+                replace={false}
+                to="/signup"
+>
+                <WithStyles(Button)
+                                className={undefined}
+                                color="primary"
+                                variant="contained"
+                >
+                                Sign Up
+                </WithStyles(Button)>
+</Link>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Dodomain",
+                "className": undefined,
+                "color": "inherit",
+                "variant": "title",
+              },
+              "ref": null,
+              "rendered": "Dodomain",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(Button)
+                  className={undefined}
+                  color="primary"
+                  variant="contained"
+>
+                  Home
+</WithStyles(Button)>,
+                "className": undefined,
+                "replace": false,
+                "to": "/",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Home",
+                  "className": undefined,
+                  "color": "primary",
+                  "variant": "contained",
+                },
+                "ref": null,
+                "rendered": "Home",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(Button)
+                  className={undefined}
+                  color="primary"
+                  variant="contained"
+>
+                  Log In
+</WithStyles(Button)>,
+                "className": undefined,
+                "id": "login",
+                "replace": false,
+                "to": "/login",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Log In",
+                  "className": undefined,
+                  "color": "primary",
+                  "variant": "contained",
+                },
+                "ref": null,
+                "rendered": "Log In",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(Button)
+                  className={undefined}
+                  color="primary"
+                  variant="contained"
+>
+                  Sign Up
+</WithStyles(Button)>,
+                "className": undefined,
+                "replace": false,
+                "to": "/signup",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Sign Up",
+                  "className": undefined,
+                  "color": "primary",
+                  "variant": "contained",
+                },
+                "ref": null,
+                "rendered": "Sign Up",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

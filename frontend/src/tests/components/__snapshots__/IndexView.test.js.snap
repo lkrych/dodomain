@@ -4,7 +4,12 @@ exports[`IndexView renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <WithStyles(IndexView)
+  Symbol(enzyme.__unrendered__): <IndexView
+    classes={
+        Object {
+            "root": "blahStyle",
+          }
+    }
     domains={
         Object {
             "domains": Array [],
@@ -25,18 +30,234 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "classes": Object {
-        "root": "IndexView-root-1",
-        "table": "IndexView-table-2",
-      },
-      "domains": Object {
-        "domains": Array [],
-        "pagination": Object {},
-      },
-      "fetchDomains": [Function],
+      "children": Array [
+        <WithStyles(Typography)
+          gutterBottom={true}
+          variant="headline"
+>
+          List of Valid Domains
+</WithStyles(Typography)>,
+        <div
+          className="errors"
+/>,
+        <WithStyles(Table)
+          className={undefined}
+>
+          <WithStyles(TableHead)>
+                    <WithStyles(TableRow)>
+                              <WithStyles(TableCell)>
+                                        Name
+                              </WithStyles(TableCell)>
+                              <WithStyles(TableCell)>
+                                        Description
+                              </WithStyles(TableCell)>
+                              <WithStyles(TableCell)>
+                                        Created At
+                              </WithStyles(TableCell)>
+                    </WithStyles(TableRow)>
+          </WithStyles(TableHead)>
+          <WithStyles(TableBody)
+                    className="domain-list"
+          >
+                    
+          </WithStyles(TableBody)>
+</WithStyles(Table)>,
+        <WithStyles(TablePagination)
+          backIconButtonProps={
+                    Object {
+                              "aria-label": "Previous Page",
+                            }
+          }
+          component="div"
+          count={0}
+          nextIconButtonProps={
+                    Object {
+                              "aria-label": "Next Page",
+                            }
+          }
+          onChangePage={[Function]}
+          page={0}
+          rowsPerPage={50}
+          rowsPerPageOptions={
+                    Array [
+                              50,
+                            ]
+          }
+/>,
+      ],
+      "className": "blahStyle",
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "List of Valid Domains",
+          "gutterBottom": true,
+          "variant": "headline",
+        },
+        "ref": null,
+        "rendered": "List of Valid Domains",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": undefined,
+          "className": "errors",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <WithStyles(TableHead)>
+              <WithStyles(TableRow)>
+                            <WithStyles(TableCell)>
+                                          Name
+                            </WithStyles(TableCell)>
+                            <WithStyles(TableCell)>
+                                          Description
+                            </WithStyles(TableCell)>
+                            <WithStyles(TableCell)>
+                                          Created At
+                            </WithStyles(TableCell)>
+              </WithStyles(TableRow)>
+</WithStyles(TableHead)>,
+            <WithStyles(TableBody)
+              className="domain-list"
+>
+              
+</WithStyles(TableBody)>,
+          ],
+          "className": undefined,
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(TableRow)>
+                <WithStyles(TableCell)>
+                                Name
+                </WithStyles(TableCell)>
+                <WithStyles(TableCell)>
+                                Description
+                </WithStyles(TableCell)>
+                <WithStyles(TableCell)>
+                                Created At
+                </WithStyles(TableCell)>
+</WithStyles(TableRow)>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(TableCell)>
+                    Name
+</WithStyles(TableCell)>,
+                  <WithStyles(TableCell)>
+                    Description
+</WithStyles(TableCell)>,
+                  <WithStyles(TableCell)>
+                    Created At
+</WithStyles(TableCell)>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Name",
+                  },
+                  "ref": null,
+                  "rendered": "Name",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Description",
+                  },
+                  "ref": null,
+                  "rendered": "Description",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Created At",
+                  },
+                  "ref": null,
+                  "rendered": "Created At",
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [],
+              "className": "domain-list",
+            },
+            "ref": null,
+            "rendered": Array [],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "backIconButtonProps": Object {
+            "aria-label": "Previous Page",
+          },
+          "component": "div",
+          "count": 0,
+          "nextIconButtonProps": Object {
+            "aria-label": "Next Page",
+          },
+          "onChangePage": [Function],
+          "page": 0,
+          "rowsPerPage": 50,
+          "rowsPerPageOptions": Array [
+            50,
+          ],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -45,18 +266,234 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "classes": Object {
-          "root": "IndexView-root-1",
-          "table": "IndexView-table-2",
-        },
-        "domains": Object {
-          "domains": Array [],
-          "pagination": Object {},
-        },
-        "fetchDomains": [Function],
+        "children": Array [
+          <WithStyles(Typography)
+            gutterBottom={true}
+            variant="headline"
+>
+            List of Valid Domains
+</WithStyles(Typography)>,
+          <div
+            className="errors"
+/>,
+          <WithStyles(Table)
+            className={undefined}
+>
+            <WithStyles(TableHead)>
+                        <WithStyles(TableRow)>
+                                    <WithStyles(TableCell)>
+                                                Name
+                                    </WithStyles(TableCell)>
+                                    <WithStyles(TableCell)>
+                                                Description
+                                    </WithStyles(TableCell)>
+                                    <WithStyles(TableCell)>
+                                                Created At
+                                    </WithStyles(TableCell)>
+                        </WithStyles(TableRow)>
+            </WithStyles(TableHead)>
+            <WithStyles(TableBody)
+                        className="domain-list"
+            >
+                        
+            </WithStyles(TableBody)>
+</WithStyles(Table)>,
+          <WithStyles(TablePagination)
+            backIconButtonProps={
+                        Object {
+                                    "aria-label": "Previous Page",
+                                  }
+            }
+            component="div"
+            count={0}
+            nextIconButtonProps={
+                        Object {
+                                    "aria-label": "Next Page",
+                                  }
+            }
+            onChangePage={[Function]}
+            page={0}
+            rowsPerPage={50}
+            rowsPerPageOptions={
+                        Array [
+                                    50,
+                                  ]
+            }
+/>,
+        ],
+        "className": "blahStyle",
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "List of Valid Domains",
+            "gutterBottom": true,
+            "variant": "headline",
+          },
+          "ref": null,
+          "rendered": "List of Valid Domains",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+            "className": "errors",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(TableHead)>
+                <WithStyles(TableRow)>
+                                <WithStyles(TableCell)>
+                                                Name
+                                </WithStyles(TableCell)>
+                                <WithStyles(TableCell)>
+                                                Description
+                                </WithStyles(TableCell)>
+                                <WithStyles(TableCell)>
+                                                Created At
+                                </WithStyles(TableCell)>
+                </WithStyles(TableRow)>
+</WithStyles(TableHead)>,
+              <WithStyles(TableBody)
+                className="domain-list"
+>
+                
+</WithStyles(TableBody)>,
+            ],
+            "className": undefined,
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(TableRow)>
+                  <WithStyles(TableCell)>
+                                    Name
+                  </WithStyles(TableCell)>
+                  <WithStyles(TableCell)>
+                                    Description
+                  </WithStyles(TableCell)>
+                  <WithStyles(TableCell)>
+                                    Created At
+                  </WithStyles(TableCell)>
+</WithStyles(TableRow)>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(TableCell)>
+                      Name
+</WithStyles(TableCell)>,
+                    <WithStyles(TableCell)>
+                      Description
+</WithStyles(TableCell)>,
+                    <WithStyles(TableCell)>
+                      Created At
+</WithStyles(TableCell)>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Name",
+                    },
+                    "ref": null,
+                    "rendered": "Name",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Description",
+                    },
+                    "ref": null,
+                    "rendered": "Description",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Created At",
+                    },
+                    "ref": null,
+                    "rendered": "Created At",
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [],
+                "className": "domain-list",
+              },
+              "ref": null,
+              "rendered": Array [],
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "backIconButtonProps": Object {
+              "aria-label": "Previous Page",
+            },
+            "component": "div",
+            "count": 0,
+            "nextIconButtonProps": Object {
+              "aria-label": "Next Page",
+            },
+            "onChangePage": [Function],
+            "page": 0,
+            "rowsPerPage": 50,
+            "rowsPerPageOptions": Array [
+              50,
+            ],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
       "type": [Function],
     },
   ],

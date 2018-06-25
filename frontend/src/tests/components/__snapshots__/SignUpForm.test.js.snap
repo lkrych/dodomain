@@ -4,7 +4,12 @@ exports[`SignUpForm renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <WithStyles(SignUpForm)
+  Symbol(enzyme.__unrendered__): <SignUpForm
+    classes={
+        Object {
+            "root": "blahStyle",
+          }
+    }
     signUp={[Function]}
 />,
   Symbol(enzyme.__renderer__): Object {
@@ -19,13 +24,318 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "classes": Object {
-        "root": "SignUpForm-root-1",
-      },
-      "signUp": [Function],
+      "children": Array [
+        <WithStyles(Typography)
+          color="error"
+          id="errors"
+          variant="body2"
+/>,
+        <WithStyles(Typography)
+          gutterBottom={true}
+          variant="headline"
+>
+          Sign Up
+</WithStyles(Typography)>,
+        <form>
+          <div
+                    className="field"
+          >
+                    <TextField
+                              error={null}
+                              id="email"
+                              label="email"
+                              onChange={[Function]}
+                              required={false}
+                              select={false}
+                              type="email"
+                              value=""
+                    />
+          </div>
+          <div
+                    className="field"
+          >
+                    <TextField
+                              autoComplete="off"
+                              error={null}
+                              id="password"
+                              label="password"
+                              onChange={[Function]}
+                              required={false}
+                              select={false}
+                              type="password"
+                              value=""
+                    />
+          </div>
+          <div
+                    className="field"
+          >
+                    <TextField
+                              autoComplete="off"
+                              error={null}
+                              id="password_confirmation"
+                              label="password confirmation"
+                              onChange={[Function]}
+                              required={false}
+                              select={false}
+                              type="password"
+                              value=""
+                    />
+          </div>
+          <br />
+          <WithStyles(Button)
+                    className="btn btn-primary btn-submit"
+                    color="primary"
+                    onClick={[Function]}
+                    type="submit"
+                    variant="contained"
+          >
+                    Sign Up
+          </WithStyles(Button)>
+</form>,
+      ],
+      "className": "blahStyle",
+      "elevation": 4,
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "",
+          "color": "error",
+          "id": "errors",
+          "variant": "body2",
+        },
+        "ref": null,
+        "rendered": "",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Sign Up",
+          "gutterBottom": true,
+          "variant": "headline",
+        },
+        "ref": null,
+        "rendered": "Sign Up",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="field"
+>
+              <TextField
+                            error={null}
+                            id="email"
+                            label="email"
+                            onChange={[Function]}
+                            required={false}
+                            select={false}
+                            type="email"
+                            value=""
+              />
+</div>,
+            <div
+              className="field"
+>
+              <TextField
+                            autoComplete="off"
+                            error={null}
+                            id="password"
+                            label="password"
+                            onChange={[Function]}
+                            required={false}
+                            select={false}
+                            type="password"
+                            value=""
+              />
+</div>,
+            <div
+              className="field"
+>
+              <TextField
+                            autoComplete="off"
+                            error={null}
+                            id="password_confirmation"
+                            label="password confirmation"
+                            onChange={[Function]}
+                            required={false}
+                            select={false}
+                            type="password"
+                            value=""
+              />
+</div>,
+            <br />,
+            <WithStyles(Button)
+              className="btn btn-primary btn-submit"
+              color="primary"
+              onClick={[Function]}
+              type="submit"
+              variant="contained"
+>
+              Sign Up
+</WithStyles(Button)>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <TextField
+                error={null}
+                id="email"
+                label="email"
+                onChange={[Function]}
+                required={false}
+                select={false}
+                type="email"
+                value=""
+/>,
+              "className": "field",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "error": null,
+                "id": "email",
+                "label": "email",
+                "onChange": [Function],
+                "required": false,
+                "select": false,
+                "type": "email",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <TextField
+                autoComplete="off"
+                error={null}
+                id="password"
+                label="password"
+                onChange={[Function]}
+                required={false}
+                select={false}
+                type="password"
+                value=""
+/>,
+              "className": "field",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "autoComplete": "off",
+                "error": null,
+                "id": "password",
+                "label": "password",
+                "onChange": [Function],
+                "required": false,
+                "select": false,
+                "type": "password",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <TextField
+                autoComplete="off"
+                error={null}
+                id="password_confirmation"
+                label="password confirmation"
+                onChange={[Function]}
+                required={false}
+                select={false}
+                type="password"
+                value=""
+/>,
+              "className": "field",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "autoComplete": "off",
+                "error": null,
+                "id": "password_confirmation",
+                "label": "password confirmation",
+                "onChange": [Function],
+                "required": false,
+                "select": false,
+                "type": "password",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Sign Up",
+              "className": "btn btn-primary btn-submit",
+              "color": "primary",
+              "onClick": [Function],
+              "type": "submit",
+              "variant": "contained",
+            },
+            "ref": null,
+            "rendered": "Sign Up",
+            "type": [Function],
+          },
+        ],
+        "type": "form",
+      },
+    ],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -34,13 +344,318 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "classes": Object {
-          "root": "SignUpForm-root-1",
-        },
-        "signUp": [Function],
+        "children": Array [
+          <WithStyles(Typography)
+            color="error"
+            id="errors"
+            variant="body2"
+/>,
+          <WithStyles(Typography)
+            gutterBottom={true}
+            variant="headline"
+>
+            Sign Up
+</WithStyles(Typography)>,
+          <form>
+            <div
+                        className="field"
+            >
+                        <TextField
+                                    error={null}
+                                    id="email"
+                                    label="email"
+                                    onChange={[Function]}
+                                    required={false}
+                                    select={false}
+                                    type="email"
+                                    value=""
+                        />
+            </div>
+            <div
+                        className="field"
+            >
+                        <TextField
+                                    autoComplete="off"
+                                    error={null}
+                                    id="password"
+                                    label="password"
+                                    onChange={[Function]}
+                                    required={false}
+                                    select={false}
+                                    type="password"
+                                    value=""
+                        />
+            </div>
+            <div
+                        className="field"
+            >
+                        <TextField
+                                    autoComplete="off"
+                                    error={null}
+                                    id="password_confirmation"
+                                    label="password confirmation"
+                                    onChange={[Function]}
+                                    required={false}
+                                    select={false}
+                                    type="password"
+                                    value=""
+                        />
+            </div>
+            <br />
+            <WithStyles(Button)
+                        className="btn btn-primary btn-submit"
+                        color="primary"
+                        onClick={[Function]}
+                        type="submit"
+                        variant="contained"
+            >
+                        Sign Up
+            </WithStyles(Button)>
+</form>,
+        ],
+        "className": "blahStyle",
+        "elevation": 4,
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "",
+            "color": "error",
+            "id": "errors",
+            "variant": "body2",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Sign Up",
+            "gutterBottom": true,
+            "variant": "headline",
+          },
+          "ref": null,
+          "rendered": "Sign Up",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="field"
+>
+                <TextField
+                                error={null}
+                                id="email"
+                                label="email"
+                                onChange={[Function]}
+                                required={false}
+                                select={false}
+                                type="email"
+                                value=""
+                />
+</div>,
+              <div
+                className="field"
+>
+                <TextField
+                                autoComplete="off"
+                                error={null}
+                                id="password"
+                                label="password"
+                                onChange={[Function]}
+                                required={false}
+                                select={false}
+                                type="password"
+                                value=""
+                />
+</div>,
+              <div
+                className="field"
+>
+                <TextField
+                                autoComplete="off"
+                                error={null}
+                                id="password_confirmation"
+                                label="password confirmation"
+                                onChange={[Function]}
+                                required={false}
+                                select={false}
+                                type="password"
+                                value=""
+                />
+</div>,
+              <br />,
+              <WithStyles(Button)
+                className="btn btn-primary btn-submit"
+                color="primary"
+                onClick={[Function]}
+                type="submit"
+                variant="contained"
+>
+                Sign Up
+</WithStyles(Button)>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <TextField
+                  error={null}
+                  id="email"
+                  label="email"
+                  onChange={[Function]}
+                  required={false}
+                  select={false}
+                  type="email"
+                  value=""
+/>,
+                "className": "field",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "error": null,
+                  "id": "email",
+                  "label": "email",
+                  "onChange": [Function],
+                  "required": false,
+                  "select": false,
+                  "type": "email",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <TextField
+                  autoComplete="off"
+                  error={null}
+                  id="password"
+                  label="password"
+                  onChange={[Function]}
+                  required={false}
+                  select={false}
+                  type="password"
+                  value=""
+/>,
+                "className": "field",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "autoComplete": "off",
+                  "error": null,
+                  "id": "password",
+                  "label": "password",
+                  "onChange": [Function],
+                  "required": false,
+                  "select": false,
+                  "type": "password",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <TextField
+                  autoComplete="off"
+                  error={null}
+                  id="password_confirmation"
+                  label="password confirmation"
+                  onChange={[Function]}
+                  required={false}
+                  select={false}
+                  type="password"
+                  value=""
+/>,
+                "className": "field",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "autoComplete": "off",
+                  "error": null,
+                  "id": "password_confirmation",
+                  "label": "password confirmation",
+                  "onChange": [Function],
+                  "required": false,
+                  "select": false,
+                  "type": "password",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Sign Up",
+                "className": "btn btn-primary btn-submit",
+                "color": "primary",
+                "onClick": [Function],
+                "type": "submit",
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": "Sign Up",
+              "type": [Function],
+            },
+          ],
+          "type": "form",
+        },
+      ],
       "type": [Function],
     },
   ],
