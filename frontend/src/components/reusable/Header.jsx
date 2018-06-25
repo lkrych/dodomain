@@ -1,25 +1,9 @@
 import React, {Component} from 'react';  
 import { Link } from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  flex: {
-    flex: 1,
-  },
-  button: {
-    margin: theme.spacing.unit,
-  },
-  link: {
-    textDecoration: "none"
-  }
-});
 
 class Header extends Component {  
   render() {
@@ -70,7 +54,7 @@ class Header extends Component {
                   Home
                 </Button>
               </Link>
-              <Link to="/login" className={classes.link} >
+              <Link to="/login" className={classes.link} id="login" >
                 <Button variant="contained" color="primary" className={classes.button}>
                   Log In
                 </Button>
@@ -90,4 +74,4 @@ class Header extends Component {
 
 
 
-export default withStyles(styles)(Header);
+export default Header;
