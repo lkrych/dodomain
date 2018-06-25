@@ -4,7 +4,7 @@ exports[`Header renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Header
+  Symbol(enzyme.__unrendered__): <WithStyles(Header)
     logged_in={false}
 />,
   Symbol(enzyme.__renderer__): Object {
@@ -17,167 +17,37 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
-      "children": Array [
-        <Link
-          className="active"
-          replace={false}
-          to="/"
->
-          Home
-</Link>,
-        " | ",
-        <Link
-          className="active"
-          id="login"
-          replace={false}
-          to="/login"
->
-          Log In
-</Link>,
-        " | ",
-        <Link
-          className="active"
-          replace={false}
-          to="/signup"
->
-          Sign Up
-</Link>,
-      ],
+      "classes": Object {
+        "button": "Header-button-3",
+        "flex": "Header-flex-2",
+        "link": "Header-link-4",
+        "root": "Header-root-1",
+      },
+      "logged_in": false,
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "Home",
-          "className": "active",
-          "replace": false,
-          "to": "/",
-        },
-        "ref": null,
-        "rendered": "Home",
-        "type": [Function],
-      },
-      " | ",
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "Log In",
-          "className": "active",
-          "id": "login",
-          "replace": false,
-          "to": "/login",
-        },
-        "ref": null,
-        "rendered": "Log In",
-        "type": [Function],
-      },
-      " | ",
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "Sign Up",
-          "className": "active",
-          "replace": false,
-          "to": "/signup",
-        },
-        "ref": null,
-        "rendered": "Sign Up",
-        "type": [Function],
-      },
-    ],
-    "type": "nav",
+    "rendered": null,
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
-        "children": Array [
-          <Link
-            className="active"
-            replace={false}
-            to="/"
->
-            Home
-</Link>,
-          " | ",
-          <Link
-            className="active"
-            id="login"
-            replace={false}
-            to="/login"
->
-            Log In
-</Link>,
-          " | ",
-          <Link
-            className="active"
-            replace={false}
-            to="/signup"
->
-            Sign Up
-</Link>,
-        ],
+        "classes": Object {
+          "button": "Header-button-3",
+          "flex": "Header-flex-2",
+          "link": "Header-link-4",
+          "root": "Header-root-1",
+        },
+        "logged_in": false,
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": "Home",
-            "className": "active",
-            "replace": false,
-            "to": "/",
-          },
-          "ref": null,
-          "rendered": "Home",
-          "type": [Function],
-        },
-        " | ",
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": "Log In",
-            "className": "active",
-            "id": "login",
-            "replace": false,
-            "to": "/login",
-          },
-          "ref": null,
-          "rendered": "Log In",
-          "type": [Function],
-        },
-        " | ",
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": "Sign Up",
-            "className": "active",
-            "replace": false,
-            "to": "/signup",
-          },
-          "ref": null,
-          "rendered": "Sign Up",
-          "type": [Function],
-        },
-      ],
-      "type": "nav",
+      "rendered": null,
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

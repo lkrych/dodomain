@@ -4,7 +4,7 @@ exports[`IndexView renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <IndexView
+  Symbol(enzyme.__unrendered__): <WithStyles(IndexView)
     domains={
         Object {
             "domains": Array [],
@@ -23,121 +23,41 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
-      "children": Array [
-        <div
-          className="errors"
-/>,
-        <h3>
-          List of domains
-</h3>,
-        <ul
-          className="domain-list"
->
-          
-</ul>,
-      ],
+      "classes": Object {
+        "root": "IndexView-root-1",
+        "table": "IndexView-table-2",
+      },
+      "domains": Object {
+        "domains": Array [],
+        "pagination": Object {},
+      },
+      "fetchDomains": [Function],
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": undefined,
-          "className": "errors",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "List of domains",
-        },
-        "ref": null,
-        "rendered": "List of domains",
-        "type": "h3",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [],
-          "className": "domain-list",
-        },
-        "ref": null,
-        "rendered": Array [],
-        "type": "ul",
-      },
-    ],
-    "type": "div",
+    "rendered": null,
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
-        "children": Array [
-          <div
-            className="errors"
-/>,
-          <h3>
-            List of domains
-</h3>,
-          <ul
-            className="domain-list"
->
-            
-</ul>,
-        ],
+        "classes": Object {
+          "root": "IndexView-root-1",
+          "table": "IndexView-table-2",
+        },
+        "domains": Object {
+          "domains": Array [],
+          "pagination": Object {},
+        },
+        "fetchDomains": [Function],
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": undefined,
-            "className": "errors",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "List of domains",
-          },
-          "ref": null,
-          "rendered": "List of domains",
-          "type": "h3",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [],
-            "className": "domain-list",
-          },
-          "ref": null,
-          "rendered": Array [],
-          "type": "ul",
-        },
-      ],
-      "type": "div",
+      "rendered": null,
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

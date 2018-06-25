@@ -18,7 +18,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <Connect(Header) />,
+        <Connect(WithStyles(Header)) />,
         undefined,
       ],
       "className": "container-fluid",
@@ -45,7 +45,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Connect(Header) />,
+          <Connect(WithStyles(Header)) />,
           undefined,
         ],
         "className": "container-fluid",
