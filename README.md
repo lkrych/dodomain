@@ -1,7 +1,10 @@
 # Dodomain
-### A Web Service that lets users track Web site domain names and accompanying descriptions.
+## Keep track of domains before they go the way of the dodo.
 
-Dodomain is built with Ruby on Rails, React, MySQL, RSpec, Jest and Enzyme
+
+
+
+A Web Service that lets users track Web site domain names and accompanying descriptions. Dodomain is built with Ruby on Rails, React, MySQL, RSpec, Jest and Enzyme
 
 ![dodo painting](/frontend/src/resources/images/dodo.jpg "Dodomain")
 
