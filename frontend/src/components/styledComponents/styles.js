@@ -16,7 +16,7 @@ export const headerStyles = theme => ({
 
 export const indexViewStyles  = theme => ({
   root: theme.mixins.gutters({
-    width: '100%',
+    width: '96%',
     paddingTop: theme.spacing.unit * 3,
     overflowX: 'auto',
   }),
