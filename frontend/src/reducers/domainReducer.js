@@ -7,16 +7,23 @@ const _defaultDomains = {
     search_query: "",
     desc: true,
     order_by: "id"
-  }
+  },
+  message: ''
 };
 
 const domainReducer = (state = _defaultDomains, action) => {
+  console.log(action);
   switch(action.type) {
     case RECEIVE_DOMAINS: 
+      let domains = Array.isArray(action.domains.domains) ?  action.domains.domains : [];
+      let pagination = typeof action.domains.pagination === 'object' ? action.domains.pagination : {};
+      let message = typeof action.domains.message === 'string'? action.domains.message : '';
       return Object.assign({},
         state,
-        {domains: action.domains.domains},
-        {pagination: action.domains.pagination});
+        {domains},
+        {pagination},
+        {message}
+      );
     default:
       return state;
   }
