@@ -2,7 +2,7 @@
 import React from 'react';
 import { Route } from 'react-router';
 import App from './containers/AppContainer.js';
-import HomePage from './components/HomePage';
+import {styledHomePage} from './components/styledComponents/styledComponents';
 import LogInForm from './containers/LoginFormContainer.js';
 import SignUpForm from './containers/SignUpFormContainer.js';
 import IndexView from './containers/IndexViewContainer.js';
@@ -16,7 +16,7 @@ export default (
     <Route path="/signup" component={SignUpForm} />
     <Route path="/index" component={IndexView} onEnter={requireAuth} />
     <Route path="/submit" component={SubmitDomain} onEnter={requireAuth} />
-    <Route path="/" exact component={HomePage} />
+    <Route path="/" exact component={styledHomePage} />
   </div>
 
 );
