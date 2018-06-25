@@ -59,7 +59,7 @@ RSpec.describe Domain, type: :model do
   
       it "should raise an error if it given an invalidly formatted domain" do
         invalid.each do |invalid_domain|
-          expect { invalid_domain.parse_domain; p invalid_domain.name }.to raise_error("Not a valid domain!")
+          expect { invalid_domain.parse_domain}.to raise_error(RuntimeError)
         end
       end
     end
@@ -84,10 +84,9 @@ RSpec.describe Domain, type: :model do
         end
       end
   
-      it "should return false if the domain doesn't have a valid IP address" do
+      it "should raise an error if the domain doesn't have a valid IP address" do
         invalid.each_with_index do |invalid_domain, idx|
-          invalid_domain.parse_domain
-          expect(invalid_domain.check_if_valid_domain).to eq(false)
+          expect {invalid_domain.check_if_valid_domain}.to raise_error(RuntimeError)
         end
       end
     end
