@@ -8,7 +8,7 @@ import Header from '../reusable/Header';
 import { withStyles } from '@material-ui/core/styles';
 import * as styles from './styles' ;
 
-export const styledHomePage = withStyles(styles.homePageStyles)(HomePage);
+export const styledHomePage = withStyles(styles.loginStyles)(HomePage);
 export const styledHeader = withStyles(styles.headerStyles)(Header);
 export const styledIndexView = withStyles(styles.indexViewStyles)(IndexView);
 export const styledLoginForm = withStyles(styles.loginStyles)(LoginForm);
