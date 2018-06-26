@@ -11,6 +11,7 @@ A Web Service that lets users track Web site domain names and accompanying descr
 
 ## Quick Guide
  * [Overview](#overview-of-dodomain)
+ * [Backend Overview](#backend-overview)
  * [DB Setup](#db-setup)
  * [DB Tables](#db-tables)
  * [Authentication](#authentication)
@@ -25,6 +26,8 @@ A Web Service that lets users track Web site domain names and accompanying descr
 
   The purpose of Dodomain is to be a web service that tracks website domains and accompanying descriptions. It is supposed to scale well, and be able to support many hundreds of thousands of users. 
 
+  Dodomain has a Ruby on Rails backend, a MySQL database, a React Frontend, a backend testing suite written with RSpec and a frontend testing suite written with Jest and Enzyme. 
+
   In this section, I'd like to give a quick overview of the strategies I used to make Dodomain a fit these criteria. 
 
   You can play with a production version of the app at [Dodomain](http://dodomain.herokuapp.com)
@@ -35,7 +38,25 @@ A Web Service that lets users track Web site domain names and accompanying descr
 
   3. **Documentation**: Testing provides documentation about the nitty gritty aspects of how a system should work, but it is also essential to provide more robust documentation for future developers that are going to contribute to a project. 
 
-## DB Setup 
+  ## Backend Overview
+
+  The backend of Dodomain is a Ruby on Rails JSON API. Ruby on Rails utilizes a Model-View-Controller paradigm. You can find the Models and Controllers for the Dodomain backend in the `app` folder. 
+
+  To learn more about the configuration of RoR apps and the boilerplate files that are included, I suggest reading the [fantastic documentation](http://guides.rubyonrails.org/).
+
+  ### API Endpoints
+
+```
+    Prefix | Verb  |  URI Pattern        |  Controller#Action        |   What does it do?
+ domains     GET      /domains(.:format)    domains#index                Returns a list of domains
+             POST     /domains(.:format)    domains#create               Creates a new domain
+
+    auth     POST     /auth(.:format)       authentication#get_token     Returns a JWT
+  signup     POST     /signup(.:format)     authentication#sign_up       Creates a user and returns a JWT
+             GET      /*path(.:format)      redirect(301, /)             Serves the React App in production
+
+```
+  ## DB Setup 
 
   Dodomain is using `mysql v 8.0.11`
 
@@ -50,6 +71,8 @@ A Web Service that lets users track Web site domain names and accompanying descr
   The SQL was run using Rails migrations, which you can view in the `./db/migrate` file.
 
 ## DB Tables
+
+  To view the database schema go to `db/schema.rb`
 
 ### Users table
 
