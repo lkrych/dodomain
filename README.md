@@ -28,7 +28,7 @@ A Web Service that lets users track Web site domain names and accompanying descr
 
   Dodomain has a Ruby on Rails backend, a MySQL database, a React Frontend, a backend testing suite written with RSpec and a frontend testing suite written with Jest and Enzyme. 
 
-  In this section, I'd like to give a quick overview of the strategies I used to make Dodomain a fit these criteria. 
+  In this section, I'd like to give a quick overview of the strategies I used to make Dodomain fit these criteria. 
 
   You can play with a production version of the app at [Dodomain](http://dodomain.herokuapp.com)
 
