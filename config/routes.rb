@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-  resources :users, only: [:new, :create]
   resources :domains, only: [:index, :create]
   
   post 'auth' => 'authentication#get_token'
