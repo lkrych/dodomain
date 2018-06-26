@@ -31,10 +31,6 @@ class AuthenticationController < ApplicationController
       send_error(e)
     end
   end
-    
-  def sign_out
-    render json: {auth_token: ''}
-  end
 
   private
 
