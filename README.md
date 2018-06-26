@@ -30,7 +30,7 @@ A Web Service that lets users track Web site domain names and accompanying descr
 
   In this section, I'd like to give a quick overview of the strategies I used to make Dodomain fit these criteria. 
 
-  You can play with a production version of the app at [Dodomain](http://dodomain.herokuapp.com)
+  You can play with a production version of the app at [Dodomain](http://dodomain.herokuapp.com).
 
   1. **Pagination**:  One of the most common problems that developers run into when scaling web services is too much load on a database. Pagination is one technique that you can use to ensure that your database is always dealing with a limited load. The Dodomain backend will only serve 50 records at a time. This number is arbitrary, and can easily be changed by editing some constants in the frontend and backend. 
   
@@ -58,21 +58,21 @@ A Web Service that lets users track Web site domain names and accompanying descr
 ```
   ## DB Setup 
 
-  Dodomain is using `mysql v 8.0.11`
+  Dodomain is using `mysql v 8.0.11`.
 
-  There are 3 associated databases with this web application
+  There are 3 associated databases with this web application:
 
-  dodomain_development, dodomain_test, dodomain_production
+  `dodomain_development`, `dodomain_test`, `dodomain_production`.
 
   These databases were created with the `CREATE DATABASE dodomain_{environment}` command.
 
-  I created two tables for this application: users and domains
+  I created two tables for this application: users and domains.
 
   The SQL was run using Rails migrations, which you can view in the `./db/migrate` file.
 
 ## DB Tables
 
-  To view the database schema go to `db/schema.rb`
+  To view the database schema go to `db/schema.rb`.
 
 ### Users table
 
@@ -122,11 +122,11 @@ A Web Service that lets users track Web site domain names and accompanying descr
 
   A JWT is created when a user signs up or signs into the application.
 
-  The authentication machinery can be found in four places in this repository. Authentication related endpoints(SignIn aka getToken, SignUp and LogOut) are found in the AuthenticationController: `app/controllers/authentication_controller.rb`. 
+  The authentication machinery can be found in four places in this repository. Authentication related endpoints(LogIn aka getToken, SignUp and LogOut) are found in the AuthenticationController: `app/controllers/authentication_controller.rb`. 
 
   These endpoints use User defined methods that can be found in the User model: `app/models/user.rb` and the JsonWebToken class, a wrapper for the jwt library, which is defined in the lib folder `lib/json_web_token`.
 
-  Two important methods on the User model are the `encrypt_password` function that takes  the plaintext user password and generates a password_digest from it which is stored in the user table, and the `match_password` function that is used in the sign in request to compare an user-entered password to the password_digest on file.
+  Two important methods on the User model are the `encrypt_password` function that takes the plaintext user password and generates a password_digest from it which is stored in the user table, and the `match_password` function that is used in the sign in request to compare an user-entered password to the password_digest on file.
 
 ```ruby
   #these methods are defined on the user model
@@ -208,9 +208,9 @@ def authenticate_request!
         end
   ```
 
-  `parse_domain` is used to clean the user input. It removes any references to the http     protocol (in case there are duplicates). A singular protocol string is added to the     front of the user input so that it can be parsed by the Ruby URI library. This library  has the ability to break down a URI into its host (the domain), and then I crosscheck to see whether or not the host has a valid Public Suffix. If it does, it is saved as the name in our database table. If this check fails, we return an error message in the api call.
+  `parse_domain` is used to clean the user input. It removes any references to the http     protocol (in case there are duplicates). A singular protocol string is added to the front of the user input so that it can be parsed by the Ruby URI library. This library has the ability to break down a URI into its host (the domain), and then I crosscheck to see whether or not the host has a valid Public Suffix. If it does, it is saved as the name in our database table. If this check fails, I return an error message in the api call.
 
-  `check_if_valid_domain` is used to contact the DNS with our shiny new domain name. It utilizes the IPSocket class to look up the address of our domain name. If this address exists, we return that it is valid, if not we raise an error.
+  `check_if_valid_domain` is used to contact the DNS with our parsed domain name. It utilizes the IPSocket class to look up the address of our domain name. If this address exists, I return that it is valid, if not I raise an error.
 
 # Frontend Orientation
 
@@ -239,6 +239,7 @@ def authenticate_request!
 
 * Clone the repo
 * `cd dodomain`
+* `bundle install` - Install all necessary Rails dependencies
 * run `npm postinstall`
 * Run `rails s`
 * Go to your browser and view the production build app at localhost:3000
@@ -294,7 +295,7 @@ def authenticate_request!
 
 #### store
 
-  The store creates the Redux store using the root_reducer. In this file we create a function that will only create the store when the DOM has been loaded in index.js
+  The store creates the Redux store using the root_reducer. In this file I create a function that will only create the store when the DOM has been loaded in index.js
 
 #### util
 
