@@ -69,18 +69,4 @@ RSpec.describe AuthenticationController, type: :controller do
 
   end
 
-  context 'Logging out' do
-    
-    it 'should return an empty token' do
-      token = get_valid_token()
-      request.headers.merge! build_headers(token)
-      delete :sign_out
-
-      expect(response.status).to be(200)
-      expect(response.content_type).to eq "application/json"
-      expect(json(response)).to have_key("auth_token")
-      expect(json(response)['auth_token']).to be_empty
-    end
-    
-  end
 end
